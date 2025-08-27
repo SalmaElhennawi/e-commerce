@@ -1,0 +1,89 @@
+<div class="signup-container">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  
+<div class="routing-button">
+  <button><a href="/auth/seller-login">Switch to Seller</a></button>
+</div>
+
+  <div class="wrapper">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <h1>User Sign Up</h1>
+      
+      <div class="input-group">
+        <div class="input-box">
+          <input  [formControl]="name" formControlName="name" type="text" id="name" name="name" placeholder="Name" required />
+          <i class='bx bxs-user'></i>
+          @if (registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)) {
+            <div class="error-message">this field is required</div>
+          }
+        </div>
+      </div>
+      
+      <div class="input-box">
+        <input [formControl]="email" formControlName="email" type="email" id="email" name="email" placeholder="Email" required />
+        <i class='bx bxs-envelope'></i>
+        @if (registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)) {
+          <div class="error-message">
+            {{ registerForm.get('email')?.errors?.['required'] ? 'this field is required' : 'Please enter a valid email' }}
+          </div>
+        }
+      </div>
+      
+<div class="input-box">
+  <input [formControl]="password" formControlName="password" type="{{ showPassword ? 'text' : 'password' }}" id="password" name="password" placeholder="Password" required />
+  <i class='bx bxs-lock-alt'></i>
+  <i class='bx {{ showPassword ? "bxs-hide" : "bxs-show" }}' (click)="togglePassword()" style="right: 45px; cursor: pointer;"></i>
+  @if (registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)) {
+    <div class="error-message">
+      {{ registerForm.get('password')?.errors?.['required'] ? 'this field is required' : 'Password must be at least 6 characters' }}
+    </div>
+  }
+</div>
+
+<div class="input-box">
+  <input [formControl]="rePassword" formControlName="rePassword" type="{{ showPassword ? 'text' : 'password' }}" id="rePassword" name="rePassword" placeholder="Confirm Password" required />
+  <i class='bx bxs-lock'></i>
+  <i class='bx {{ showPassword ? "bxs-hide" : "bxs-show" }}' (click)="togglePassword()" style="right: 45px; cursor: pointer;"></i>
+  @if (registerForm.get('rePassword')?.invalid && (registerForm.get('rePassword')?.dirty || registerForm.get('rePassword')?.touched)) {
+    <div class="error-message">
+      {{ registerForm.get('rePassword')?.errors?.['required'] ? 'this field is required' : 'Password must be at least 6 characters' }}
+    </div>
+  }
+  @if (registerForm.errors?.['valuesNotEqual'] && (registerForm.get('password')?.dirty && registerForm.get('rePassword')?.dirty)) {
+    <div class="error-message">
+      Passwords do not match
+    </div>
+  }
+</div>
+      
+ <div class="input-box">
+  <input [formControl]="phone" formControlName="phone" type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+  <i class='bx bxs-phone'></i>
+  @if (registerForm.get('phone')?.invalid && (registerForm.get('phone')?.dirty || registerForm.get('phone')?.touched)) {
+    <div class="error-message">
+      {{ registerForm.get('phone')?.errors?.['required'] ? 'this field is required' : 'Please enter a valid phone number' }}
+    </div>
+  }
+</div>
+
+      
+      <div class="button-group">
+        <button type="button" class="btnR" (click)="onReset()">Reset</button>
+  <button type="submit" class="btnC" [disabled]="registerForm.invalid || isLoading"> Create Account
+  @if (isLoading) {
+    <i class='bx bx-loader-alt bx-spin'></i>
+  }
+</button>
+      </div>
+
+      <div class="login-link">
+        <p>Already have an account? <a href="/auth/user-login">Log in</a></p>
+      </div>
+
+     @if (errorMsg) {
+  <div class="alert alert-danger">{{errorMsg}}</div>
+}
+    </form>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+.empty-offers-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2rem;
+  background-color: #f8f9fa;
+
+  .empty-offers-content {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+    .empty-offers-icon {
+      margin-bottom: 2rem;
+      
+      i {
+        font-size: 5rem;
+        color: #ff6b6b;
+        opacity: 0.8;
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    p {
+      color: #7f8c8d;
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      button {
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        mat-icon {
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .home-btn {
+        border: 1px solid #dfe6e9;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .empty-offers-container {
+    padding: 1.5rem;
+    min-height: 60vh;
+
+    .empty-offers-content {
+      padding: 2rem;
+
+      .empty-offers-icon i {
+        font-size: 4rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        max-width: 100%;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .empty-offers-container {
+    padding: 1rem;
+
+    .empty-offers-content {
+      padding: 1.5rem 1rem;
+      border-radius: 8px;
+
+      .empty-offers-icon i {
+        font-size: 3.5rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

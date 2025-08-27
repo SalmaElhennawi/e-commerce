@@ -1,0 +1,60 @@
+.brand-vision-section {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.brand-hero img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+.vision-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.vision-text {
+  font-size: 1.1rem;
+}
+
+.vision-text p.lead {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.vision-quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #555;
+  border-left: 3px solid #000;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+}
+
+.vision-quote-footer {
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .vision-title {
+    font-size: 2rem;
+  }
+  
+  .vision-text,
+  .vision-quote {
+    font-size: 1rem;
+  }
+  
+  .vision-text p.lead {
+    font-size: 1.1rem;
+  }
+}

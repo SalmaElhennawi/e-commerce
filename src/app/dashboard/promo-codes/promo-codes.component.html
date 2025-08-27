@@ -1,0 +1,155 @@
+<mat-card class="mt-3">
+  <mat-card-header class="d-flex justify-content-between align-items-center">
+    <mat-card-title>Promo Codes Management</mat-card-title>
+    <button mat-raised-button color="primary" (click)="openPromoModal(true)" data-bs-toggle="modal" 
+              data-bs-target="#promoModal">
+      <mat-icon>add</mat-icon> Add Promo Code
+    </button>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="isLoading" class="text-center py-5">
+      <mat-spinner color="primary"></mat-spinner>
+    </div>
+
+    <div *ngIf="!isLoading">
+      <mat-card *ngIf="all_promo_data.length === 0" class="p-3 bg-info text-white">
+        No promo codes found. Add your first promo code!
+      </mat-card>
+
+      <table *ngIf="all_promo_data.length > 0" mat-table [dataSource]="all_promo_data" class="mat-elevation-z1" style="width: 100%;">
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let promo; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef>Code</th>
+          <td mat-cell *matCellDef="let promo">
+            <strong>{{ promo.code }}</strong>
+            <span class="badge bg-success ms-2">{{ promo.discountPercentage }}% OFF</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="discount">
+          <th mat-header-cell *matHeaderCellDef>Discount</th>
+          <td mat-cell *matCellDef="let promo">{{ promo.discountPercentage }}%</td>
+        </ng-container>
+
+        <ng-container matColumnDef="validity">
+          <th mat-header-cell *matHeaderCellDef>Validity</th>
+          <td mat-cell *matCellDef="let promo">
+            {{ promo.validFrom | date }} to {{ promo.validUntil | date }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let promo">
+            <span class="badge" [ngClass]="{
+              'bg-success': promo.isActive,
+              'bg-secondary': !promo.isActive
+            }">
+              {{ promo.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let promo">
+            <button mat-icon-button color="primary" (click)="openPromoModal(false, promo.id)" 
+        data-bs-toggle="modal" data-bs-target="#promoModal">
+  <mat-icon>edit</mat-icon>
+</button>
+<button mat-icon-button color="warn" (click)="deletePromo(promo.id)">
+  <mat-icon>delete</mat-icon>
+</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['index', 'code', 'discount', 'validity', 'status', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['index', 'code', 'discount', 'validity', 'status', 'actions']"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Promo Modal -->
+<div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="promoModalLabel">{{popup_header}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalButton"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addEditPromoDForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="code" class="form-label">Code</label>
+              <input type="text" class="form-control" id="code" formControlName="code" 
+                     placeholder="e.g. SUMMER20" [ngClass]="{'is-invalid': f['code'].invalid && (f['code'].dirty || f['code'].touched)}">
+              <div *ngIf="f['code'].invalid && (f['code'].dirty || f['code'].touched)" class="invalid-feedback">
+                <div *ngIf="f['code'].errors?.['required']">Code is required</div>
+                <div *ngIf="f['code'].errors?.['pattern']">Only uppercase letters and numbers allowed</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="discountPercentage" class="form-label">Discount Percentage</label>
+              <input type="number" class="form-control" id="discountPercentage" formControlName="discountPercentage" 
+                     min="1" max="100" [ngClass]="{'is-invalid': f['discountPercentage'].invalid && (f['discountPercentage'].dirty || f['discountPercentage'].touched)}">
+              <div *ngIf="f['discountPercentage'].invalid && (f['discountPercentage'].dirty || f['discountPercentage'].touched)" class="invalid-feedback">
+                <div *ngIf="f['discountPercentage'].errors?.['required']">Discount is required</div>
+                <div *ngIf="f['discountPercentage'].errors?.['min']">Minimum 1%</div>
+                <div *ngIf="f['discountPercentage'].errors?.['max']">Maximum 100%</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="validFrom" class="form-label">Valid From</label>
+              <input type="date" class="form-control" id="validFrom" formControlName="validFrom" 
+                     [ngClass]="{'is-invalid': f['validFrom'].invalid && (f['validFrom'].dirty || f['validFrom'].touched)}">
+              <div *ngIf="f['validFrom'].invalid && (f['validFrom'].dirty || f['validFrom'].touched)" class="invalid-feedback">
+                <div *ngIf="f['validFrom'].errors?.['required']">Start date is required</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="validUntil" class="form-label">Valid Until</label>
+              <input type="date" class="form-control" id="validUntil" formControlName="validUntil" 
+                     [ngClass]="{'is-invalid': f['validUntil'].invalid && (f['validUntil'].dirty || f['validUntil'].touched)}">
+              <div *ngIf="f['validUntil'].invalid && (f['validUntil'].dirty || f['validUntil'].touched)" class="invalid-feedback">
+                <div *ngIf="f['validUntil'].errors?.['required']">End date is required</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="maxUses" class="form-label">Maximum Uses</label>
+              <input type="number" class="form-control" id="maxUses" formControlName="maxUses" min="1" 
+                     [ngClass]="{'is-invalid': f['maxUses'].invalid && (f['maxUses'].dirty || f['maxUses'].touched)}">
+              <div *ngIf="f['maxUses'].invalid && (f['maxUses'].dirty || f['maxUses'].touched)" class="invalid-feedback">
+                <div *ngIf="f['maxUses'].errors?.['required']">Max uses is required</div>
+                <div *ngIf="f['maxUses'].errors?.['min']">Minimum 1 use</div>
+              </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-center">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="isActive" formControlName="isActive">
+                <label class="form-check-label" for="isActive">Active</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="submitPromo()" [disabled]="addEditPromoDForm.invalid">
+          {{isAddMode ? 'Add Promo Code' : 'Update Promo Code'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

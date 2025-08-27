@@ -1,0 +1,39 @@
+<header class="main-header">
+    <div class="brand-title">
+       <div class="images-left">
+      <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+       <img src="../../../assets/icons/sign-out.png" alt="User" width="30" (click)="toggleAuthDropdown()" />
+
+      <div class="auth-dropdown" [class.active]="isAuthDropdownOpen">
+        <button (click)="logout()">Sign Out</button>
+      </div>
+    </div>
+
+        <h1 ><a routerLink="/dashboard/main">Off-White™</a></h1>
+    </div>
+
+
+    <nav class="nav-container" [class.mobile-open]="isMobileMenuOpen">
+        <div class="nav-item">
+            <a routerLink="/dashboard/products" routerLinkActive="active" (click)="closeMobileMenu()">Products</a>
+        </div>
+
+         <div class="nav-item">
+            <a routerLink="/dashboard/promo-codes" routerLinkActive="active" (click)="closeMobileMenu()">Promo&nbsp;codes</a>
+         </div>
+
+        <div class="nav-item">
+            <a routerLink="/dashboard/orders" routerLinkActive="active" (click)="closeMobileMenu()">Orders</a>
+        </div>
+
+        <div class="nav-item">
+            <a routerLink="/dashboard/users" routerLinkActive="active" (click)="closeMobileMenu()">Users</a>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+</header>

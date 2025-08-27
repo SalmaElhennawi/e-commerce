@@ -1,0 +1,38 @@
+<div class="products-container">
+  <h2 class="products-title">Children's Collection</h2>
+
+  <ng-container *ngIf="!isLoading; else loading">
+    <div class="products-grid">
+      <div class="product-card" *ngFor="let product of childrenProducts">
+        <div class="card-image-container" (click)="viewProductDetails(product.id)">
+          <img [src]="product.uploadPhoto" class="card-image" [alt]="product.name">
+        </div>
+        <div class="card-body">
+          <div class="name-heart-container">
+            <h3 class="product-name">{{ product.name }}</h3>
+           <i 
+  class="fa-regular fa-heart heart-icon" 
+  [class.favorited]="isProductInWishlist(product.id)"
+  [class.fa-solid]="isProductInWishlist(product.id)"
+  (click)="toggleWishlist(product)">
+</i>
+          </div>
+          <p class="product-price">${{ product.price | number }}</p>
+        </div>
+        <button class="add-to-cart-btn" (click)="addToCart(product)">
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  </ng-template>
+
+  <div *ngIf="!isLoading && childrenProducts.length === 0" class="empty-state">
+    <p>No products available in this collection.</p>
+  </div>
+</div>

@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(180deg, #8B92DC 0%, #9295AD 50%, #ebecef 100%);
+  padding: 20px;
+  position: relative;
+}
+
+.wrapper {
+  width: 450px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  display: flex;
+  gap: 15px;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+  outline: none;
+}
+
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; 
+  margin: 15px 0;
+  width: 100%;
+}
+.btnR, .btnC {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  margin: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.btnC:disabled {
+  opacity: 0.7;
+  cursor: default;       
+  background: #ccc;     
+  transform: none ; 
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.divider::before {
+  margin-right: 15px;
+}
+
+.divider::after {
+  margin-left: 15px;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.login-link {
+  text-align: center;
+  font-size: 15px;
+}
+
+.login-link a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+[formgroupname].ng-invalid.ng-touched.ng-dirty label,
+.control:has(.ng-invalid.ng-touched.ng-dirty) label {
+ color: #f98b75;
+} 
+
+[formgroupname] .ng-invalid.ng-touched.ng-dirty input, 
+input.ng-invalid.ng-touched.ng-dirty {
+  background-color: #fbdcd6; 
+  border-color: #f84e2c;
+}
+
+.error-message {
+  color: #f84e2c;
+  font-size: 12px;
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px; 
+
+  input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+    outline: none;
+  }
+
+  .error-message {
+    position: absolute; 
+    left: 20px;
+    color: #f84e2c;
+    font-size: 12px;
+    margin-top: 1.3px;
+  }
+
+&:has(input[formControlName="password"]),
+  &:has(input[formControlName="rePassword"]) {
+    .error-message {
+      &:first-of-type {
+        bottom: -20px; 
+      }
+      &:last-of-type {
+        bottom: -35px; 
+      }
+    }
+  }
+}
+
+.input-box i:nth-child(3) {
+  right: 45px;
+  cursor: pointer;
+}
+
+.fa-spinner {
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.alert-danger {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.routing-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  
+  button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

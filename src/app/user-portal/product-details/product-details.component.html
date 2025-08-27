@@ -1,0 +1,39 @@
+<div class="product-details-container" *ngIf="product; else loadingOrError">
+  <div class="product-image-container">
+    <img [src]="product.uploadPhoto" [alt]="product.name" class="product-image">
+  </div>
+  
+  <div class="product-info-container">
+   <div class="name-heart-container">
+            <h3 class="product-name">{{ product.name }}</h3>
+      <i 
+  class="fa-regular fa-heart heart-icon" 
+  [class.favorited]="isProductInWishlist(product.id)"
+  [class.fa-solid]="isProductInWishlist(product.id)"
+  (click)="toggleWishlist(product)">
+</i>
+    </div>
+    <div class="product-meta">
+      <span class="product-category">{{ product.category }}</span>
+      <span class="product-price">${{ product.price | number:'1.2-2' }}</span>
+    </div>
+    
+    <p class="product-description">{{ product.productDesc }}</p>
+    
+    <div class="product-actions">
+      <button class="add-to-cart-btn" (click)="addToCart(product)">
+        Add to Cart
+      </button>
+      <button class="back-btn" routerLink="/home">Back to Home</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingOrError>
+  <div *ngIf="isLoading" class="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+  <div *ngIf="!isLoading" class="error-message">
+    Product not found or error loading product details.
+  </div>
+</ng-template>

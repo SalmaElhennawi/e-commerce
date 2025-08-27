@@ -1,0 +1,34 @@
+<div class="orders-container">
+  <div class="orders-header">
+    <h2>Your Orders</h2>
+    <button mat-stroked-button routerLink="/cart" class="back-to-cart-button">
+      <mat-icon>shopping_cart</mat-icon>
+      Back to Cart
+    </button>
+  </div>
+
+  <div class="empty-orders-content">
+    <div class="empty-orders-icon">
+      <i class="fa-solid fa-box-open"></i>
+    </div>
+    <h2>No Orders Yet</h2>
+    <p>You haven't placed any orders. Start shopping to see your orders here!</p>
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" routerLink="/products">
+        <mat-icon>shopping_bag</mat-icon>
+        Shop Now
+      </button>
+      <button mat-stroked-button color="primary" routerLink="/" class="home-btn">
+        <mat-icon>home</mat-icon>
+        Return Home
+      </button>
+    </div>
+    <div class="help-section">
+      <p>Need help with your order?</p>
+      <a mat-button color="accent" routerLink="/contact">
+        <mat-icon>help</mat-icon>
+        Contact Support
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,575 @@
+{
+  "products": [
+    {
+      "id": "658f",
+      "name": "Blue Jacquard Fresco Jeans",
+      "uploadPhoto": "https://i.postimg.cc/G2NjmxDq/Blue-Jacquard-Fresco-Jeans.webp",
+      "productDesc": "Premium blue jeans with intricate jacquard fresco detailing. Tailored fit with subtle texture that catches the light beautifully. Dress up or down with ease.",
+      "category": "Men",
+      "price": 1000,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "2a73",
+      "name": "White Poplin Boxy Long-Sleeved Shirt",
+      "uploadPhoto": "https://i.postimg.cc/Y9VJBgCw/White-Poplin-Boxy-Long-Sleeved-Shirt.webp",
+      "productDesc": "Crisp white poplin shirt with contemporary boxy silhouette. Relaxed fit with French cuffs and curved hem. Perfect for tucking in or wearing loose.",
+      "category": "Women",
+      "price": 550,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "61f7",
+      "name": "Big Bookish T-Shirt",
+      "uploadPhoto": "https://i.postimg.cc/cL19gVf9/Big-Bookish-T-Shirt.jpg",
+      "productDesc": "Fun graphic tee with oversized book print for little readers. Soft 100% cotton with reinforced seams for active kids. Easy-care machine washable.",
+      "category": "children",
+      "price": 200,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "be30",
+      "name": "Denim Wide Cargo Pants",
+      "uploadPhoto": "https://i.postimg.cc/KjjvJtsS/Denim-Wide-Cargo-Pants.webp",
+      "productDesc": "Fashion-forward wide leg cargo pants in premium denim. Multiple functional pockets with flap closures. High waist with adjustable belt loops for customized fit.",
+      "category": "Women",
+      "price": 975,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "888f",
+      "name": "White Cash Varsity Jacket",
+      "uploadPhoto": "https://i.postimg.cc/cCM7dkPw/White-Cash-Varsity-Jacket.webp",
+      "productDesc": "Premium white varsity jacket with cashmere lining for ultimate comfort. Features ribbed cuffs and hem, embroidered logo details, and multiple pockets for both style and functionality.",
+      "category": "Men",
+      "price": 1200,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "7255",
+      "name": "Spray Arrow Shorts",
+      "uploadPhoto": "https://i.postimg.cc/cHnrSRBR/Spray-Arrow-Shorts.webp",
+      "productDesc": "Cool shorts with spray-paint arrow design. Elastic waistband with inner drawstring for secure fit. Quick-dry fabric ideal for active kids.",
+      "category": "children",
+      "price": 200,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "0d10",
+      "name": "Black Arrow Skinny Jeans",
+      "uploadPhoto": "https://i.postimg.cc/gkHt0YLL/Black-Arrow-Skinny-Jeans.webp",
+      "productDesc": "Sleek black skinny jeans with subtle arrow detailing. Stretch denim provides comfort without sacrificing style. Perfect for both casual and dressed-up occasions.",
+      "category": "Men",
+      "price": 450,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "7a80",
+      "name": "Denim Doll Dress",
+      "uploadPhoto": "https://i.postimg.cc/76sqGfPB/Denim-Doll-Dress.webp",
+      "productDesc": "Adorable denim dress with doll-inspired silhouette. Smocked bodice and puffed short sleeves for feminine charm. Perfect with sneakers or sandals.",
+      "category": "Women",
+      "price": 2000,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "b3a9",
+      "name": "Stamp Leggings",
+      "uploadPhoto": "https://i.postimg.cc/Nfrrtwph/Stamp-Leggings.jpg",
+      "productDesc": "Colorful leggings featuring assorted stamp prints. Stretchy fabric allows for unrestricted movement. Perfect for playdates or school days.",
+      "category": "children",
+      "price": 250,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "deee",
+      "name": "Beige Off Split Sweatshirt",
+      "uploadPhoto": "https://i.postimg.cc/v89Sp7Qz/Beige-Off-Split-Sweatshirt.webp",
+      "productDesc": "Contemporary beige sweatshirt with unique split design. Made from premium cotton blend for softness and durability. Perfect for casual outings or relaxed weekends.",
+      "category": "Men",
+      "price": 800,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "f790",
+      "name": "Blue Meteor Jeans",
+      "uploadPhoto": "https://i.postimg.cc/KY1fSWkR/Blue-Meteor-Jeans.webp",
+      "productDesc": "Trendy blue jeans with meteor-inspired whiskering and fading. Mid-rise with comfortable stretch. Versatile wash transitions seamlessly from day to night.",
+      "category": "Women",
+      "price": 950,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "2356",
+      "name": "Diagonal Bookish Sweatshirt",
+      "uploadPhoto": "https://i.postimg.cc/d3RPR3JP/Diagonal-Bookish-Sweatshirt.jpg",
+      "productDesc": "Cozy kids' sweatshirt with diagonal book pattern. Brushed interior for warmth, ribbed cuffs to keep out drafts. Playful yet practical design.",
+      "category": "children",
+      "price": 150,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "3916",
+      "name": "Cream Striped Knit Polo Shirt",
+      "uploadPhoto": "https://i.postimg.cc/Sxr7Mh8X/Cream-Striped-Knit-Polo-Shirt.webp",
+      "productDesc": "Elegant cream polo with vertical stripe detailing. Soft knit fabric drapes beautifully. Three-button placket and ribbed collar for polished casual style.",
+      "category": "Women",
+      "price": 200,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "53bf",
+      "name": "Beige Stitch Cargo Pants",
+      "uploadPhoto": "https://i.postimg.cc/yYHrBJxz/Beige-Stitch-Cargo-Pants.webp",
+      "productDesc": "Utility-inspired cargo pants with contrast stitching details. Features multiple pockets, adjustable waistband, and durable fabric that moves with you throughout the day.",
+      "category": "Men",
+      "price": 950,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "4c26",
+      "name": "Blue Irregular Cargo Jeans",
+      "uploadPhoto": "https://i.postimg.cc/2yFG3wyN/Blue-Irregular-Cargo-Jeans.webp",
+      "productDesc": "Innovative blue jeans with irregular cargo pocket design. Distressed details and functional pockets combine urban edge with practical utility.",
+      "category": "Men",
+      "price": 950,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "a187",
+      "name": "Black Starry Cross Collar Mini Dress",
+      "uploadPhoto": "https://i.postimg.cc/7hyXxcxN/Black-Starry-Cross-Collar-Mini-Dress.webp",
+      "productDesc": "Dramatic black mini dress with celestial star print and distinctive cross collar. Sleeveless with slight A-line shape. Perfect for making an entrance.",
+      "category": "Women",
+      "price": 1000,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "7f52",
+      "name": "Spray Arrow Polo",
+      "uploadPhoto": "https://i.postimg.cc/x18jQG0X/Spray-Arrow-Polo.jpg",
+      "productDesc": "Stylish polo shirt with spray arrow graphic. Collared neckline with three-button placket. Wrinkle-resistant fabric stays neat all day.",
+      "category": "children",
+      "price": 300,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "8c18",
+      "name": "Green Savana Mini Skirt",
+      "uploadPhoto": "https://i.postimg.cc/C5cnKF9Y/Green-Savana-Mini-Skirt.webp",
+      "productDesc": "Vibrant green mini skirt with savana-inspired print. Flattering A-line silhouette with hidden side zipper. Lined for comfort and perfect twirl factor.",
+      "category": "Women",
+      "price": 800,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "3e45",
+      "name": "White Fresco Arrow Bowling Shirt",
+      "uploadPhoto": "https://i.postimg.cc/wjJMCTWZ/White-Fresco-Arrow-Bowling-Shirt.webp",
+      "productDesc": "Classic white bowling shirt with retro arrow pattern. Lightweight fresco fabric keeps you cool, while the button-up design adds vintage charm to your wardrobe.",
+      "category": "Men",
+      "price": 200,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "5897",
+      "name": "Black Script Hoodie",
+      "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+      "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
+      "category": "Men",
+      "price": 500,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "0fd4",
+      "name": "Off Straps Bandeau Mini Dress Black",
+      "uploadPhoto": "https://i.postimg.cc/HxxVhGVh/Off-Straps-Bandeau-Mini-Dress-Black.webp",
+      "productDesc": "Sophisticated black bandeau dress with off-shoulder straps. Bodycon fit with ruching detail for flattering silhouette. Ideal for special occasions.",
+      "category": "Women",
+      "price": 2700,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "de8e",
+      "name": "Denim Corset Dress",
+      "uploadPhoto": "https://i.postimg.cc/HxVktQNG/Denim-Corset-Dress.webp",
+      "productDesc": "Statement denim dress with built-in corset detailing. Structured bodice with lace-up front and flared skirt. Combines edgy and romantic elements beautifully.",
+      "category": "Women",
+      "price": 2500,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "2edb",
+      "name": "Off Italic Linen Souvenir Pan Ivory",
+      "uploadPhoto": "https://i.postimg.cc/VvZ58Kbk/Off-Italic-Linen-Souvenir-Pan-Ivory.webp",
+      "productDesc": "Chic off-white linen pants with italic-inspired seam detailing. Lightweight and breathable for warm weather. Elastic waist with drawstring for adjustable comfort.",
+      "category": "Women",
+      "price": 350,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "c081",
+      "name": "Overdyed Straight Jeans",
+      "uploadPhoto": "https://i.postimg.cc/QNTM9MDt/Overdyed-Straight-Jeans.webp",
+      "productDesc": "Richly colored straight-leg jeans with overdyed finish for depth of color. Mid-rise fit with just the right amount of stretch for all-day comfort.",
+      "category": "Men",
+      "price": 675,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "bfda",
+      "name": "Black Fresco Souvenir Varsity Jacket",
+      "uploadPhoto": "https://i.postimg.cc/pdpskzGK/Black-Fresco-Souvenir-Varsity-Jacket.webp",
+      "productDesc": "Statement-making black varsity jacket with fresco fabric sleeves. Embroidered souvenir patches add unique character. Ribbed trim for classic athletic styling.",
+      "category": "Men",
+      "price": 1700,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "cbca",
+      "name": "White Starry Arrow Knit Sweater",
+      "uploadPhoto": "https://i.postimg.cc/2ScLY8hx/White-Starry-Arrow-Knit-Sweater.webp",
+      "productDesc": "Charming white knit sweater with celestial star and arrow motif. Lightweight yet warm, perfect for layering. Feminine fit with ribbed trim at cuffs and hem.",
+      "category": "Women",
+      "price": 600,
+      "sellerId": "91c2"
+    },
+    {
+      "id": "ac90",
+      "name": "White Rose Valley Varsity Jacket",
+      "uploadPhoto": "https://i.postimg.cc/yxpCd5P2/White-Rose-Valley-Varsity-Jacket.webp",
+      "productDesc": "Feminine twist on the classic varsity jacket. White base with delicate rose valley embroidery. Satin sleeves and contrast ribbing for sophisticated sporty style.",
+      "category": "Women",
+      "price": 1500,
+      "sellerId": "91c2"
+    }
+  ],
+  "users": [
+    {
+      "id": "0104",
+      "name": "salma khaled",
+      "email": "salma.k.elhennawi@gmail.com",
+      "password": "111111",
+      "rePassword": "111111",
+      "phone": "01276292696"
+    },
+    {
+      "id": "1e54",
+      "name": "salma",
+      "email": "235126@eru.edu.eg",
+      "password": "111111",
+      "rePassword": "111111",
+      "phone": "0123456789"
+    }
+  ],
+  "sellers": [
+    {
+      "id": "91c2",
+      "name": "sooooo",
+      "email": "sooooo@gmail.com",
+      "password": "111111",
+      "rePassword": "111111",
+      "phone": "01276292696"
+    },
+    {
+      "id": "b147",
+      "name": "salma khaled",
+      "email": "salma.k.elhennawi@gmail.com",
+      "password": "111111",
+      "rePassword": "111111",
+      "phone": "01276292696"
+    }
+  ],
+  "carts": [
+    {
+      "id": "temp_1756237728948",
+      "product": {
+        "id": "2a73",
+        "name": "White Poplin Boxy Long-Sleeved Shirt",
+        "uploadPhoto": "https://i.postimg.cc/Y9VJBgCw/White-Poplin-Boxy-Long-Sleeved-Shirt.webp",
+        "productDesc": "Crisp white poplin shirt with contemporary boxy silhouette. Relaxed fit with French cuffs and curved hem. Perfect for tucking in or wearing loose.",
+        "category": "Women",
+        "price": 550,
+        "sellerId": "91c2"
+      },
+      "quantity": 2,
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1756237731020",
+      "product": {
+        "id": "658f",
+        "name": "Blue Jacquard Fresco Jeans",
+        "uploadPhoto": "https://i.postimg.cc/G2NjmxDq/Blue-Jacquard-Fresco-Jeans.webp",
+        "productDesc": "Premium blue jeans with intricate jacquard fresco detailing. Tailored fit with subtle texture that catches the light beautifully. Dress up or down with ease.",
+        "category": "Men",
+        "price": 1000,
+        "sellerId": "91c2"
+      },
+      "quantity": 1,
+      "userId": "0104"
+    }
+  ],
+  "promoCodes": [
+    {
+      "id": "e427",
+      "code": "SAVE10",
+      "discountPercentage": 10,
+      "validFrom": "2025-08-13T00:00:00.000Z",
+      "validUntil": "2025-08-30T00:00:00.000Z",
+      "maxUses": 6,
+      "isActive": true,
+      "sellerId": "91c2",
+      "currentUses": 0
+    }
+  ],
+  "orders": [
+    {
+      "id": "db0a",
+      "email": "salma.k.elhennawi@gmail.com",
+      "address": "CAIRO",
+      "contact": "01276292696",
+      "totalPrice": 4569,
+      "userId": "0104",
+      "items": [
+        {
+          "id": "temp_1755340487935",
+          "product": {
+            "id": "5897",
+            "name": "Black Script Hoodie",
+            "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+            "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
+            "category": "Men",
+            "price": 500,
+            "sellerId": "91c2"
+          },
+          "quantity": 2,
+          "userId": "0104"
+        },
+        {
+          "id": "temp_1755340491359",
+          "product": {
+            "id": "0fd4",
+            "name": "Off Straps Bandeau Mini Dress Black",
+            "uploadPhoto": "https://i.postimg.cc/HxxVhGVh/Off-Straps-Bandeau-Mini-Dress-Black.webp",
+            "productDesc": "Sophisticated black bandeau dress with off-shoulder straps. Bodycon fit with ruching detail for flattering silhouette. Ideal for special occasions.",
+            "category": "Women",
+            "price": 2700,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        },
+        {
+          "id": "temp_1755340498039",
+          "product": {
+            "id": "7255",
+            "name": "Spray Arrow Shorts",
+            "uploadPhoto": "https://i.postimg.cc/cHnrSRBR/Spray-Arrow-Shorts.webp",
+            "productDesc": "Cool shorts with spray-paint arrow design. Elastic waistband with inner drawstring for secure fit. Quick-dry fabric ideal for active kids.",
+            "category": "children",
+            "price": 200,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        },
+        {
+          "id": "temp_1755340503159",
+          "product": {
+            "id": "f790",
+            "name": "Blue Meteor Jeans",
+            "uploadPhoto": "https://i.postimg.cc/KY1fSWkR/Blue-Meteor-Jeans.webp",
+            "productDesc": "Trendy blue jeans with meteor-inspired whiskering and fading. Mid-rise with comfortable stretch. Versatile wash transitions seamlessly from day to night.",
+            "category": "Women",
+            "price": 950,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        },
+        {
+          "id": "temp_1755340504471",
+          "product": {
+            "id": "3916",
+            "name": "Cream Striped Knit Polo Shirt",
+            "uploadPhoto": "https://i.postimg.cc/Sxr7Mh8X/Cream-Striped-Knit-Polo-Shirt.webp",
+            "productDesc": "Elegant cream polo with vertical stripe detailing. Soft knit fabric drapes beautifully. Three-button placket and ribbed collar for polished casual style.",
+            "category": "Women",
+            "price": 200,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        }
+      ],
+      "paymentMethod": "Credit Card",
+      "orderDate": "2025-08-16T10:35:28.216Z",
+      "status": "Processing"
+    },
+    {
+      "id": "3310",
+      "email": "salma.k.elhennawi@gmail.com",
+      "address": "cairo",
+      "contact": "01276292696",
+      "totalPrice": 1774,
+      "userId": "0104",
+      "items": [
+        {
+          "id": "temp_1755340504471",
+          "product": {
+            "id": "3916",
+            "name": "Cream Striped Knit Polo Shirt",
+            "uploadPhoto": "https://i.postimg.cc/Sxr7Mh8X/Cream-Striped-Knit-Polo-Shirt.webp",
+            "productDesc": "Elegant cream polo with vertical stripe detailing. Soft knit fabric drapes beautifully. Three-button placket and ribbed collar for polished casual style.",
+            "category": "Women",
+            "price": 200,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        },
+        {
+          "id": "temp_1755412126124",
+          "product": {
+            "id": "658f",
+            "name": "Blue Jacquard Fresco Jeans",
+            "uploadPhoto": "https://i.postimg.cc/G2NjmxDq/Blue-Jacquard-Fresco-Jeans.webp",
+            "productDesc": "Premium blue jeans with intricate jacquard fresco detailing. Tailored fit with subtle texture that catches the light beautifully. Dress up or down with ease.",
+            "category": "Men",
+            "price": 1000,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        },
+        {
+          "id": "temp_1755412127643",
+          "product": {
+            "id": "2a73",
+            "name": "White Poplin Boxy Long-Sleeved Shirt",
+            "uploadPhoto": "https://i.postimg.cc/Y9VJBgCw/White-Poplin-Boxy-Long-Sleeved-Shirt.webp",
+            "productDesc": "Crisp white poplin shirt with contemporary boxy silhouette. Relaxed fit with French cuffs and curved hem. Perfect for tucking in or wearing loose.",
+            "category": "Women",
+            "price": 550,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        }
+      ],
+      "paymentMethod": "Credit Card",
+      "orderDate": "2025-08-17T12:37:42.241Z",
+      "status": "Processing"
+    },
+    {
+      "id": "7865",
+      "email": "salma.k.elhennawi@gmail.com",
+      "address": "Badr",
+      "contact": "01276292696",
+      "totalPrice": 1024,
+      "userId": "0104",
+      "items": [
+        {
+          "id": "temp_1756236813644",
+          "product": {
+            "id": "658f",
+            "name": "Blue Jacquard Fresco Jeans",
+            "uploadPhoto": "https://i.postimg.cc/G2NjmxDq/Blue-Jacquard-Fresco-Jeans.webp",
+            "productDesc": "Premium blue jeans with intricate jacquard fresco detailing. Tailored fit with subtle texture that catches the light beautifully. Dress up or down with ease.",
+            "category": "Men",
+            "price": 1000,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        }
+      ],
+      "paymentMethod": "Credit Card",
+      "orderDate": "2025-08-26T19:33:47.733Z",
+      "status": "Processing"
+    },
+    {
+      "id": "203a",
+      "email": "salma.k.elhennawi@gmail.com",
+      "address": "C",
+      "contact": "01276292696",
+      "totalPrice": 1959,
+      "userId": "0104",
+      "items": [
+        {
+          "id": "temp_1755520730041",
+          "product": {
+            "id": "2a73",
+            "name": "White Poplin Boxy Long-Sleeved Shirt",
+            "uploadPhoto": "https://i.postimg.cc/Y9VJBgCw/White-Poplin-Boxy-Long-Sleeved-Shirt.webp",
+            "productDesc": "Crisp white poplin shirt with contemporary boxy silhouette. Relaxed fit with French cuffs and curved hem. Perfect for tucking in or wearing loose.",
+            "category": "Women",
+            "price": 550,
+            "sellerId": "91c2"
+          },
+          "quantity": 3,
+          "userId": "0104"
+        },
+        {
+          "id": "temp_1756022099316",
+          "product": {
+            "id": "5897",
+            "name": "Black Script Hoodie",
+            "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+            "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
+            "category": "Men",
+            "price": 500,
+            "sellerId": "91c2"
+          },
+          "quantity": 1,
+          "userId": "0104"
+        }
+      ],
+      "paymentMethod": "Credit Card",
+      "orderDate": "2025-08-26T19:41:15.005Z",
+      "status": "Processing"
+    }
+  ],
+  "wishlist": [
+    {
+      "id": "temp_1755595966851",
+      "product": {
+        "id": "61f7",
+        "name": "Big Bookish T-Shirt",
+        "uploadPhoto": "https://i.postimg.cc/cL19gVf9/Big-Bookish-T-Shirt.jpg",
+        "productDesc": "Fun graphic tee with oversized book print for little readers. Soft 100% cotton with reinforced seams for active kids. Easy-care machine washable.",
+        "category": "children",
+        "price": 200,
+        "sellerId": "91c2"
+      },
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1755701631273",
+      "product": {
+        "id": "5897",
+        "name": "Black Script Hoodie",
+        "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+        "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
+        "category": "Men",
+        "price": 500,
+        "sellerId": "91c2"
+      },
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1756238171157",
+      "product": {
+        "id": "f790",
+        "name": "Blue Meteor Jeans",
+        "uploadPhoto": "https://i.postimg.cc/KY1fSWkR/Blue-Meteor-Jeans.webp",
+        "productDesc": "Trendy blue jeans with meteor-inspired whiskering and fading. Mid-rise with comfortable stretch. Versatile wash transitions seamlessly from day to night.",
+        "category": "Women",
+        "price": 950,
+        "sellerId": "91c2"
+      },
+      "userId": "0104"
+    }
+  ]
+}
