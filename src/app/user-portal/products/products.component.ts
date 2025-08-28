@@ -9,7 +9,6 @@ import { WishlistService } from '../../services/wishlist.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit {
   allProducts: product[] = [];
@@ -21,8 +20,7 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private router: Router,
-    private wishlistService: WishlistService,
-    private cdr: ChangeDetectorRef
+    private wishlistService: WishlistService
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +33,6 @@ export class ProductsComponent implements OnInit {
     if (user.id) {
       this.wishlistService.getWishlist().subscribe(items => {
         this.wishlistItems = items;
-        this.cdr.markForCheck(); 
       });
     }
   }
@@ -66,7 +63,6 @@ export class ProductsComponent implements OnInit {
       this.wishlistService.addToWishlist(product).subscribe({
         next: () => {
           this.loadWishlistItems();
-          this.cdr.markForCheck();
         },
         error: (err) => console.error('Error adding to wishlist:', err)
       });
@@ -83,12 +79,10 @@ export class ProductsComponent implements OnInit {
           product.category?.toLowerCase() === 'children'
         );
         this.isLoading = false;
-        this.cdr.markForCheck(); 
       },
       error: (error) => {
         console.error('Error loading products:', error);
         this.isLoading = false;
-        this.cdr.markForCheck(); 
       }
     });
   }
@@ -100,10 +94,5 @@ export class ProductsComponent implements OnInit {
   addToCart(product: product): void {
     this.cartService.addToCart(product);
     console.log('Added to cart:', product);
-    this.cdr.markForCheck();
-  }
-
-  trackByProductId(index: number, product: product): number | string {
-    return product.id; 
   }
 }

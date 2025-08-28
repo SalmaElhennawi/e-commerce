@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,7 +11,8 @@ import { CheckoutComponent } from '../checkout/checkout.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent {
   displayedColumns: string[] = ['index', 'image', 'name', 'price', 'quantity', 'total', 'actions'];
@@ -25,7 +26,8 @@ export class CartComponent {
     public cartService: CartService,
     private promoCodeService: PromoCodeService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
   ) {
     this.cartItems$ = this.cartService.cartItems$;
     
@@ -35,13 +37,20 @@ export class CartComponent {
     ));
   }
 
+  // Add trackBy function
+  trackByCartItemId(index: number, item: cart): string | number {
+    return item.id;
+  }
+
   removeItem(cartItemId: string | number): void {
     this.cartService.removeFromCart(cartItemId);
+    this.cdr.markForCheck(); // Mark for change detection
   }
 
   updateQuantity(item: cart, quantity: number): void {
     if (quantity > 0) {
       this.cartService.updateQuantity(item.product.id, quantity);
+      this.cdr.markForCheck(); // Mark for change detection
     } else {
       this.removeItem(item.id); 
     }
@@ -50,6 +59,7 @@ export class CartComponent {
   clearCart(): void {
     if (confirm('Are you sure you want to clear your entire cart?')) {
       this.cartService.clearCart();
+      this.cdr.markForCheck(); // Mark for change detection
     }
   }
 
@@ -61,6 +71,7 @@ export class CartComponent {
         if (result.valid && result.promoCode) {
           this.appliedPromoCode = result.promoCode;
           this.calculateDiscount();
+          this.cdr.markForCheck(); // Mark for change detection
           this.snackBar.open('Promo code applied successfully!', 'Close', { duration: 3000 });
         } else {
           this.snackBar.open(result.message || 'Invalid promo code', 'Close', { duration: 3000 });
@@ -76,12 +87,14 @@ export class CartComponent {
     if (!this.appliedPromoCode) {
       this.discountAmount = 0;
       this.cartService.discountAmount = 0;
+      this.cdr.markForCheck(); // Mark for change detection
       return;
     }
 
     this.subtotal$.subscribe(subtotal => {
       this.discountAmount = subtotal * (this.appliedPromoCode.discountPercentage / 100);
       this.cartService.discountAmount = this.discountAmount;
+      this.cdr.markForCheck(); // Mark for change detection
     });
   }
 
@@ -90,6 +103,7 @@ export class CartComponent {
     this.appliedPromoCode = null;
     this.discountAmount = 0;
     this.cartService.discountAmount = 0;
+    this.cdr.markForCheck(); // Mark for change detection
     this.snackBar.open('Promo code removed', 'Close', { duration: 3000 });
   }
 

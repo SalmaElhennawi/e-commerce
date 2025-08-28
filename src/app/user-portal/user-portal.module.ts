@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserPortalRoutingModule } from './user-portal.routing.module'; 
 import { AboutComponent } from './about/about.component';
@@ -14,7 +14,7 @@ import { ProductsComponent } from './products/products.component';
 import { WomenComponent } from './women/women.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserPortalComponent } from './user-portal/user-portal.component';
-import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,12 +30,13 @@ import { SearchComponent } from './search/search.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 @NgModule({
   declarations: [ UserPortalComponent, AboutComponent, BlogComponent, BrandsComponent, 
     ChildrenComponent, ContactComponent, HeaderComponent, HomeComponent, MenComponent,
     NewOffersComponent, ProductsComponent, WomenComponent, FooterComponent, ProductDetailsComponent,
-    CartComponent,CheckoutComponent, SearchComponent, WishlistComponent, MyOrdersComponent ],
+    CartComponent,CheckoutComponent, OrderSummaryComponent, SearchComponent, WishlistComponent, MyOrdersComponent ],
   imports: [
     CommonModule,
     UserPortalRoutingModule, 

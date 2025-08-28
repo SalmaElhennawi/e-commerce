@@ -4,7 +4,7 @@
   
   <ng-container *ngIf="!isLoading; else loading">
     <div class="products-grid">
-      <div class="product-card"*ngFor="let product of allProducts; trackBy: trackByProductId">
+      <div class="product-card"*ngFor="let product of allProducts">
         <div class="card-image-container" (click)="viewProductDetails(product.id)" >
           <img [src]="product.uploadPhoto" class="card-image" [alt]="product.name">
         </div>

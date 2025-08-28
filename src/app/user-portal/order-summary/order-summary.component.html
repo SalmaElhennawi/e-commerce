@@ -1,0 +1,26 @@
+<div class="summary">
+  <div class="summary-row">
+    <span>Subtotal</span>
+    <span>{{ subtotal | currency }}</span>
+  </div>
+  <div class="summary-row">
+    <span>Shipping</span>
+    <span>{{ shipping | currency }}</span>
+  </div>
+  <div class="summary-row">
+    <span>Estimated taxes</span>
+    <span>{{ estimatedTax | currency }}</span>
+  </div>
+  <div *ngIf="discountAmount > 0" class="summary-row discount-row">
+    <span>Discount</span>
+    <span>-{{ discountAmount | currency }}</span>
+  </div>
+  <div class="summary-row total">
+    <span>Total</span>
+    <span>{{ total | currency }}</span>
+  </div>
+
+  <div class="checkout-buttons">
+    <button class="checkout-btn" (click)="onCheckout()">Checkout</button>
+  </div>
+</div>

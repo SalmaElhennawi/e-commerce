@@ -88,9 +88,8 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; trackBy: trackByCartItemId"></tr>
       </table>
-
 
       <div class="order-review">
         <div class="discount-section">
@@ -110,39 +109,20 @@
           </div>
         </div>
 
-        <div class="summary">
-          <div class="summary-row">
-            <span>Subtotal</span>
-            <span>{{ (subtotal$ | async) | currency }}</span>
-          </div>
-          <div class="summary-row">
-            <span>Shipping</span>
-            <span>{{ cartService.shipping | currency }}</span>
-          </div>
-          <div class="summary-row">
-            <span>Estimated taxes</span>
-            <span>{{ cartService.estimatedTax | currency }}</span>
-          </div>
-          <div *ngIf="discountAmount > 0" class="summary-row discount-row">
-            <span>Discount</span>
-            <span>-{{ discountAmount | currency }}</span>
-          </div>
-          <div class="summary-row total">
-            <span>Total</span>
-            <span>{{ (cartService.getCalculatedTotal().total) | currency }}</span>
-          </div>
-
-          <div class="checkout-buttons">
-            <button class="checkout-btn" (click)="openCheckout()">Checkout</button>
-          </div>
-        </div>
-
+        <!-- Use the child component for order summary -->
+        <app-order-summary
+          [subtotal]="(subtotal$ | async) || 0"
+          [shipping]="cartService.shipping"
+          [estimatedTax]="cartService.estimatedTax"
+          [discountAmount]="discountAmount"
+          (checkout)="openCheckout()">
+        </app-order-summary>
       </div>
+      
       <div class="cart-actions" *ngIf="cartItems.length > 0">
-  <button class="clear-cart-button" (click)="clearCart()">Clear Cart</button>
-  <button routerLink="/products" class="continue-shopping">Continue Shopping</button>
-</div>
-
+        <button class="clear-cart-button" (click)="clearCart()">Clear Cart</button>
+        <button routerLink="/products" class="continue-shopping">Continue Shopping</button>
+      </div>
     </div>
   </ng-container>
 </div>
