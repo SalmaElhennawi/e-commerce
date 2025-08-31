@@ -296,17 +296,45 @@
       "userId": "0104"
     },
     {
-      "id": "temp_1756237731020",
+      "id": "temp_1756637708959",
       "product": {
-        "id": "658f",
-        "name": "Blue Jacquard Fresco Jeans",
-        "uploadPhoto": "https://i.postimg.cc/G2NjmxDq/Blue-Jacquard-Fresco-Jeans.webp",
-        "productDesc": "Premium blue jeans with intricate jacquard fresco detailing. Tailored fit with subtle texture that catches the light beautifully. Dress up or down with ease.",
+        "id": "5897",
+        "name": "Black Script Hoodie",
+        "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+        "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
         "category": "Men",
-        "price": 1000,
+        "price": 500,
         "sellerId": "91c2"
       },
-      "quantity": 1,
+      "quantity": 2,
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1756662516034",
+      "product": {
+        "id": "de8e",
+        "name": "Denim Corset Dress",
+        "uploadPhoto": "https://i.postimg.cc/HxVktQNG/Denim-Corset-Dress.webp",
+        "productDesc": "Statement denim dress with built-in corset detailing. Structured bodice with lace-up front and flared skirt. Combines edgy and romantic elements beautifully.",
+        "category": "Women",
+        "price": 2500,
+        "sellerId": "91c2"
+      },
+      "quantity": 3,
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1756667086569",
+      "product": {
+        "id": "2a73",
+        "name": "White Poplin Boxy Long-Sleeved Shirt",
+        "uploadPhoto": "https://i.postimg.cc/Y9VJBgCw/White-Poplin-Boxy-Long-Sleeved-Shirt.webp",
+        "productDesc": "Crisp white poplin shirt with contemporary boxy silhouette. Relaxed fit with French cuffs and curved hem. Perfect for tucking in or wearing loose.",
+        "category": "Women",
+        "price": 550,
+        "sellerId": "91c2"
+      },
+      "quantity": 2,
       "userId": "0104"
     }
   ],
@@ -316,8 +344,30 @@
       "code": "SAVE10",
       "discountPercentage": 10,
       "validFrom": "2025-08-13T00:00:00.000Z",
-      "validUntil": "2025-08-30T00:00:00.000Z",
+      "validUntil": "2025-09-30T00:00:00.000Z",
       "maxUses": 6,
+      "isActive": true,
+      "sellerId": "91c2",
+      "currentUses": 0
+    },
+    {
+      "id": "6cbb",
+      "code": "FAJR20",
+      "discountPercentage": 20,
+      "validFrom": "2025-08-31T00:00:00.000Z",
+      "validUntil": "2025-09-30T00:00:00.000Z",
+      "maxUses": 10,
+      "isActive": true,
+      "sellerId": "91c2",
+      "currentUses": 0
+    },
+    {
+      "id": "a852",
+      "code": "OMAR50",
+      "discountPercentage": 50,
+      "validFrom": "2025-08-31T00:00:00.000Z",
+      "validUntil": "2025-10-30T00:00:00.000Z",
+      "maxUses": 3,
       "isActive": true,
       "sellerId": "91c2",
       "currentUses": 0
@@ -567,6 +617,32 @@
         "productDesc": "Trendy blue jeans with meteor-inspired whiskering and fading. Mid-rise with comfortable stretch. Versatile wash transitions seamlessly from day to night.",
         "category": "Women",
         "price": 950,
+        "sellerId": "91c2"
+      },
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1756637711885",
+      "product": {
+        "id": "5897",
+        "name": "Black Script Hoodie",
+        "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+        "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
+        "category": "Men",
+        "price": 500,
+        "sellerId": "91c2"
+      },
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1756667089392",
+      "product": {
+        "id": "658f",
+        "name": "Blue Jacquard Fresco Jeans",
+        "uploadPhoto": "https://i.postimg.cc/G2NjmxDq/Blue-Jacquard-Fresco-Jeans.webp",
+        "productDesc": "Premium blue jeans with intricate jacquard fresco detailing. Tailored fit with subtle texture that catches the light beautifully. Dress up or down with ease.",
+        "category": "Men",
+        "price": 1000,
         "sellerId": "91c2"
       },
       "userId": "0104"

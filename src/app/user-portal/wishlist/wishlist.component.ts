@@ -8,22 +8,21 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
-  styleUrl: './wishlist.component.scss'
-})
+  styleUrls: ['./wishlist.component.scss'],
+  })
 export class WishlistComponent {
-  displayedColumns: string[] = ['index', 'image', 'name', 'price', 'actions', 'empty' ];
-wishlistItems$: Observable<wishlist[]>;
+ displayedColumns: string[] = ['index', 'image', 'name', 'price', 'actions', 'delete'];
+  wishlistItems$: Observable<wishlist[]>;
 
-constructor(
+  constructor(
     public WishlistService: WishlistService,
-    public CartService:CartService,
-     private router: Router
+    public CartService: CartService,
+    private router: Router
   ) {
-
     this.wishlistItems$ = this.WishlistService.wishlistItems$;
   }
 
-    clearWishlist(): void {
+  clearWishlist(): void {
     if (confirm('Are you sure you want to clear your entire wishlist?')) {
       this.WishlistService.clearWishlist();
     }
@@ -34,11 +33,11 @@ constructor(
   }
 
   addToCart(product: product): void {
-  this.CartService.addToCart(product);
-  console.log('Added to cart:', product);
- }
+    this.CartService.addToCart(product);
+    console.log('Added to cart:', product);
+  }
 
- continueShopping(): void {
+  continueShopping(): void {
     this.router.navigate(['/products']);
   }
 }

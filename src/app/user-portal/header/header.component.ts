@@ -15,24 +15,25 @@ export class HeaderComponent implements OnInit {
   isAuthDropdownOpen = false;
   isSearchBarOpen = false;
   isCartOpen = false;
-  isWishlistOpen =false;
+  isWishlistOpen = false;
   searchTerm: string = '';
   cartItemCount = 0;
   wishlistItemCount = 0;
   isUserLoggedIn = false;
-   currentLang = 'en'; 
+  currentLang = 'en';
 
+  constructor(
+    private _Router: Router,
+    private _UserService: UserService,
+    private cartService: CartService,
+    private wishlistService: WishlistService,
+    private languageService: LanguageService
+  ) { }
 
-  constructor(private _Router: Router,
-     private _UserService: UserService,
-     private cartService: CartService,
-     private wishlistService: WishlistService,
-      private languageService: LanguageService
-    ) { }
-
-  switchLang(lang: string) {
-    this.languageService.switchLanguage(lang);
-    this.currentLang = lang;
+  toggleLanguage() {
+    const newLang = this.currentLang === 'en' ? 'ar' : 'en';
+    this.languageService.switchLanguage(newLang);
+    this.currentLang = newLang;
   }
 
   toggleMobileMenu() {
@@ -62,21 +63,21 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isUserLoggedIn = !!localStorage.getItem('user');
     this._UserService.isUserLoggedIn.subscribe((isLoggedIn) => {
-  this.isUserLoggedIn = isLoggedIn;
-});
+      this.isUserLoggedIn = isLoggedIn;
+    });
 
-  this.cartService.cartItems$.subscribe(items => {
-    this.cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
-  });
+    this.cartService.cartItems$.subscribe(items => {
+      this.cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+    });
 
-  this.wishlistService.wishlistItems$.subscribe(items => {
-  this.wishlistItemCount = items.length;
-});
-  
-this.currentLang = this.languageService.getCurrentLang();
-}
+    this.wishlistService.wishlistItems$.subscribe(items => {
+      this.wishlistItemCount = items.length;
+    });
+    
+    this.currentLang = this.languageService.getCurrentLang();
+  }
 
-logout(): void {
+  logout(): void {
     this._UserService.signOut();
     this.closeAuthDropdown();
     this.closeMobileMenu();
@@ -87,16 +88,15 @@ logout(): void {
     this._Router.navigate(['/profile']);  
   }
 
-
   navigateToCart() {
-  this.closeMobileMenu();
-  this._Router.navigate(['/cart']);
-}
+    this.closeMobileMenu();
+    this._Router.navigate(['/cart']);
+  }
 
   navigateToWishlist() {
-  this.closeMobileMenu();
-  this._Router.navigate(['/wishlist']);
-}
+    this.closeMobileMenu();
+    this._Router.navigate(['/wishlist']);
+  }
 
   toggleSearchBar() {
     this.isSearchBarOpen = !this.isSearchBarOpen;
@@ -106,7 +106,7 @@ logout(): void {
     }
   }
 
-   search() {
+  search() {
     if (this.searchTerm.trim()) {
       this._Router.navigate(['/search', this.searchTerm.trim()]);
       this.isSearchBarOpen = false;
@@ -134,10 +134,10 @@ logout(): void {
   }
 
   closeCart(): void {
-  this.isCartOpen = false;
-}
+    this.isCartOpen = false;
+  }
 
-togglewishlist() {
+  togglewishlist() {
     this.isWishlistOpen = !this.isWishlistOpen;
     if (this.isWishlistOpen) {
       this.isMobileMenuOpen = false;
@@ -146,7 +146,7 @@ togglewishlist() {
     }
   }
 
- addToWishlist() {
+  addToWishlist() {
     this.wishlistItemCount++;
   }
 
@@ -157,7 +157,6 @@ togglewishlist() {
   }
 
   closeWishlist(): void {
-  this.isWishlistOpen = false;
-}
-
+    this.isWishlistOpen = false;
+  }
 }

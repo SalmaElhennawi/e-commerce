@@ -19,10 +19,10 @@
 
     <div class="images-right">
 
-     <!-- Language Switcher Buttons -->
       <div class="language-switcher">
-        <button (click)="switchLang('en')" [class.active]="currentLang === 'en'">EN</button>
-        <button (click)="switchLang('ar')" [class.active]="currentLang === 'ar'">AR</button>
+        <button (click)="toggleLanguage()" [class.active]="true">
+          {{ currentLang === 'en' ? 'AR' : 'EN' }}
+        </button>
       </div>
 
       <img src="../../../assets/icons/search.png" alt="search" width="30" (click)="toggleSearchBar()">

@@ -1,99 +1,135 @@
 .main-header {
   background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
-  position:sticky;
+  padding: 0.8rem 0; 
+  position: sticky;
   top: 0;
-  bottom: 0;
   z-index: 1000;
   transition: transform 0.3s ease;
-  
+
   &.hidden {
     transform: translateY(-100%);
   }
-   
+
   .brand-title {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    gap: 20px; 
-    padding: 0 20px; 
-  
-
-      @media (max-width: 576px) {
-    gap: 5px;
-    padding: 0 5px;
-  }
-
-      h1 a {
-      color: black;
-      text-decoration: none;
-      font-weight: bold ;
-      border: none;
-      outline: none;
-      margin: 0; 
-      flex-grow: 1; 
-      text-align: center; 
-      font-size: 2.5rem;
-
-     @media (max-width: 576px) {
-      font-size: 1.8rem; // Slightly smaller font for very small screens
-      letter-spacing: -0.5px; // Adjust letter spacing if needed
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px; 
+    padding: 0 15px; 
+    
+    @media (max-width: 768px) {
+      gap: 8px; 
+      padding: 0 10px; 
     }
 
-     @media (min-width: 576px) {
+    @media (max-width: 576px) {
+      gap: 5px;
+      padding: 0 8px;
+    }
+
+    h1 {
+      flex-grow: 1;
+      text-align: center;
+      margin: 0;
+
+      a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
         font-size: 2.2rem;
-      }
-      
-      @media (min-width: 768px) {
-        font-size: 2.5rem;
+        outline: none;
+        
+        @media (max-width: 1200px) {
+          font-size: 2rem;
+        }
+
+        @media (max-width: 992px) {
+          font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 1.6rem;
+        }
+
+        @media (max-width: 576px) {
+          font-size: 1.4rem;
+          letter-spacing: -0.5px;
+        }
+
+        @media (max-width: 400px) {
+          font-size: 1.2rem;
+        }
       }
     }
   }
 
-  .images-left, .images-right {
+  .images-left,
+  .images-right {
     display: flex;
     align-items: center;
-    gap: 15px;    @media (max-width: 576px) {
-      gap: 10px;
+    gap: 12px;
+
+    @media (max-width: 768px) {
+      gap: 6px;
+    }
+
+    @media (max-width: 576px) {
+      gap: 4px;
     }
 
     img {
       cursor: pointer;
       transition: transform 0.2s ease;
+      width: 28px;
 
       &:hover {
         transform: scale(1.1);
       }
+
+      @media (max-width: 768px) {
+        width: 24px;
+      }
+
+      @media (max-width: 576px) {
+        width: 22px;
+      }
+
+      @media (max-width: 400px) {
+        width: 20px;
+      }
     }
   }
 
-  // Mobile menu toggle button
   .mobile-menu-toggle {
     display: none;
     flex-direction: column;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
-    
+    padding: 4px;
+    margin-right: 5px;
+
     .line {
-      width: 25px;
-      height: 3px;
+      width: 22px;
+      height: 2.5px;
       background-color: #333;
-      margin: 3px 0;
+      margin: 2.5px 0;
       transition: 0.3s;
     }
-    
+
     @media (max-width: 992px) {
       display: flex;
     }
-  }
 
-  // Hide desktop-only elements on mobile
-  .desktop-only {
-    @media (max-width: 768px) {
-      display: none;
+    @media (max-width: 576px) {
+      padding: 3px;
+      
+      .line {
+        width: 20px;
+        height: 2px;
+        margin: 2px 0;
+      }
     }
   }
 }
@@ -102,22 +138,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0.8rem 1.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
+    gap: 1.2rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  @media (max-width: 1024px) {
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+  }
+
+  @media (max-width: 992px) {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 280px;
+    width: 260px;
     height: 100vh;
     background-color: #ffffff;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    padding: 80px 0 20px 0;
+    padding: 70px 0 15px 0;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     transition: left 0.3s ease;
     z-index: 1000;
@@ -127,54 +173,59 @@
       left: 0;
     }
   }
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    gap: 1rem;
-    padding: 0 1rem;
-  }
 }
 
 .nav-item {
-  flex: 1;
   text-align: center;
-  
-  @media (max-width: 768px) {
+  flex-shrink: 0;
+
+  @media (min-width: 993px) {
+    flex: 1;
+  }
+
+  @media (max-width: 992px) {
     flex: none;
     text-align: left;
     border-bottom: 1px solid #f0f0f0;
   }
-  
+
   a {
     color: #333333;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 4px;
     transition: all 0.3s ease;
     display: inline-block;
-    min-width: 100px;
+    min-width: 90px;
 
-    @media (max-width: 1024px) and (min-width: 769px) {
+    @media (max-width: 1200px) {
       font-size: 0.9rem;
-      padding: 0.4rem 0.8rem;
+      padding: 0.35rem 0.7rem;
+      min-width: 80px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
       min-width: 70px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       display: block;
       width: 100%;
-      padding: 1rem 2rem;
+      padding: 0.9rem 1.5rem;
       border-radius: 0;
       min-width: auto;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     &:hover {
       background-color: #f5f5f5;
       transform: translateY(-2px);
-      
-      @media (max-width: 768px) {
+
+      @media (max-width: 992px) {
         transform: none;
         background-color: #f8f9fa;
       }
@@ -184,19 +235,18 @@
       color: #ffffff;
       background-color: #4285f4;
       box-shadow: 0 4px 6px rgba(66, 133, 244, 0.2);
-      
-      @media (max-width: 768px) {
+
+      @media (max-width: 992px) {
         box-shadow: none;
       }
     }
   }
 }
 
-// Mobile overlay
 .mobile-overlay {
   display: none;
-  
-  @media (max-width: 768px) {
+
+  @media (max-width: 992px) {
     position: fixed;
     top: 0;
     left: 0;
@@ -216,21 +266,20 @@
   }
 }
 
-.auth-dropdown ,
+.auth-dropdown,
 .search-bar-container {
   position: absolute;
-  top: 100%;
-  right: 40;
+  top: calc(100% + 5px);
   background-color: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  padding: 10px;
-  z-index: 1000;
+  padding: 8px;
+  z-index: 1050;
   display: none;
   flex-direction: column;
-  gap: 10px;
-  min-width: 120px;
+  gap: 8px;
+  min-width: 140px;
 
   &.active {
     display: flex;
@@ -240,9 +289,11 @@
     background-color: #080808;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 7px 10px;
     border-radius: 4px;
     cursor: pointer;
+    text-align: center;
+    font-size: 0.9rem;
 
     &:hover {
       background-color: #070707;
@@ -251,15 +302,23 @@
 
   input[type="text"] {
     border: 1px solid #ccc;
-    padding: 8px;
+    padding: 7px;
     border-radius: 4px;
     width: 100%;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    top: 60px;
+    min-width: 120px;
+    padding: 10px;
   }
 }
 
 .search-bar-container {
   button {
     background-color: #090909;
+
     &:hover {
       background-color: #040404;
     }
@@ -274,89 +333,79 @@
   position: relative;
 }
 
-@media (max-width: 768px) {
-  .auth-dropdown ,
-  .search-bar-container {
-    position: fixed;
-    top: 60px; /* Adjust based on your header height */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 300px;
-    padding: 15px;
-  }
-}
-
-.cart-container {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.cart-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: bold;
-
-   &[data-count="0"] {
-    background-color: #666;
-  }
-  
-}
-
+.cart-container,
 .wishlist-container {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  padding: 4px;
+
+  @media (max-width: 576px) {
+    padding: 3px;
+  }
 }
 
+.cart-badge,
 .wishlist-badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -2px;
+  right: -6px;
   background-color: red;
   color: white;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: bold;
+  pointer-events: none;
 
-   &[data-count="0"] {
+  &[data-count="0"] {
     background-color: #666;
   }
-  
+
+  @media (max-width: 768px) {
+    width: 15px;
+    height: 15px;
+    font-size: 8px;
+    top: -1px;
+    right: -5px;
+  }
+
+  @media (max-width: 576px) {
+    width: 14px;
+    height: 14px;
+    font-size: 7px;
+    top: 0px;
+    right: -4px;
+  }
 }
 
-// Add these styles to your existing SCSS file
-
 .language-switcher {
-  display: flex;
-  gap: 5px;
-  margin-right: 10px;
+  margin-right: 8px;
+
+  @media (max-width: 768px) {
+    margin-right: 5px;
+  }
+
+  @media (max-width: 576px) {
+    margin-right: 3px;
+  }
 
   button {
-    padding: 5px 10px;
+    padding: 4px 8px;
     border: 1px solid #ccc;
     background: white;
     cursor: pointer;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     transition: all 0.3s ease;
+    min-width: 35px;
+    text-align: center;
 
     &:hover {
       background: #f0f0f0;
@@ -367,25 +416,23 @@
       color: white;
       border-color: #007bff;
     }
-  }
 
-  @media (max-width: 768px) {
-    margin-right: 5px;
-    
-    button {
-      padding: 4px 8px;
-      font-size: 11px;
+    @media (max-width: 768px) {
+      padding: 3px 6px;
+      font-size: 10px;
+      min-width: 30px;
     }
-  }
-}
 
-// Make sure images-right has proper spacing
-.images-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  
-  @media (max-width: 576px) {
-    gap: 10px;
+    @media (max-width: 576px) {
+      padding: 2px 5px;
+      font-size: 9px;
+      min-width: 28px;
+    }
+
+    @media (max-width: 400px) {
+      padding: 2px 4px;
+      font-size: 8px;
+      min-width: 26px;
+    }
   }
 }
