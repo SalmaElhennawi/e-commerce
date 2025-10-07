@@ -265,19 +265,18 @@
   "sellers": [
     {
       "id": "91c2",
-      "name": "sooooo",
       "email": "sooooo@gmail.com",
-      "password": "111111",
-      "rePassword": "111111",
-      "phone": "01276292696"
+      "password": "111111"
     },
     {
       "id": "b147",
-      "name": "salma khaled",
       "email": "salma.k.elhennawi@gmail.com",
-      "password": "111111",
-      "rePassword": "111111",
-      "phone": "01276292696"
+      "password": "111111"
+    },
+    {
+      "id": "6b35",
+      "email": "amrkhaled96023@gmail",
+      "password": "111111"
     }
   ],
   "carts": [
@@ -335,6 +334,62 @@
         "sellerId": "91c2"
       },
       "quantity": 2,
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1759857798738",
+      "product": {
+        "id": "0fd4",
+        "name": "Off Straps Bandeau Mini Dress Black",
+        "uploadPhoto": "https://i.postimg.cc/HxxVhGVh/Off-Straps-Bandeau-Mini-Dress-Black.webp",
+        "productDesc": "Sophisticated black bandeau dress with off-shoulder straps. Bodycon fit with ruching detail for flattering silhouette. Ideal for special occasions.",
+        "category": "Women",
+        "price": 2700,
+        "sellerId": "91c2"
+      },
+      "quantity": 3,
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1759857802542",
+      "product": {
+        "id": "5897",
+        "name": "Black Script Hoodie",
+        "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+        "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
+        "category": "Men",
+        "price": 500,
+        "sellerId": "91c2"
+      },
+      "quantity": 1,
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1759857803497",
+      "product": {
+        "id": "2edb",
+        "name": "Off Italic Linen Souvenir Pan Ivory",
+        "uploadPhoto": "https://i.postimg.cc/VvZ58Kbk/Off-Italic-Linen-Souvenir-Pan-Ivory.webp",
+        "productDesc": "Chic off-white linen pants with italic-inspired seam detailing. Lightweight and breathable for warm weather. Elastic waist with drawstring for adjustable comfort.",
+        "category": "Women",
+        "price": 350,
+        "sellerId": "91c2"
+      },
+      "quantity": 1,
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1759857808749",
+      "product": {
+        "id": "c081",
+        "name": "Overdyed Straight Jeans",
+        "uploadPhoto": "https://i.postimg.cc/QNTM9MDt/Overdyed-Straight-Jeans.webp",
+        "productDesc": "Richly colored straight-leg jeans with overdyed finish for depth of color. Mid-rise fit with just the right amount of stretch for all-day comfort.",
+        "category": "Men",
+        "price": 675,
+        "sellerId": "91c2"
+      },
+      "quantity": 1,
       "userId": "0104"
     }
   ],
@@ -643,6 +698,32 @@
         "productDesc": "Premium blue jeans with intricate jacquard fresco detailing. Tailored fit with subtle texture that catches the light beautifully. Dress up or down with ease.",
         "category": "Men",
         "price": 1000,
+        "sellerId": "91c2"
+      },
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1759857795181",
+      "product": {
+        "id": "5897",
+        "name": "Black Script Hoodie",
+        "uploadPhoto": "https://i.postimg.cc/cH3XGZNH/Black-Script-Hoodie.webp",
+        "productDesc": "Cozy black hoodie featuring elegant script branding. Heavyweight cotton blend with brushed interior for warmth. Kangaroo pocket and adjustable drawstring hood.",
+        "category": "Men",
+        "price": 500,
+        "sellerId": "91c2"
+      },
+      "userId": "0104"
+    },
+    {
+      "id": "temp_1759857812539",
+      "product": {
+        "id": "c081",
+        "name": "Overdyed Straight Jeans",
+        "uploadPhoto": "https://i.postimg.cc/QNTM9MDt/Overdyed-Straight-Jeans.webp",
+        "productDesc": "Richly colored straight-leg jeans with overdyed finish for depth of color. Mid-rise fit with just the right amount of stretch for all-day comfort.",
+        "category": "Men",
+        "price": 675,
         "sellerId": "91c2"
       },
       "userId": "0104"
