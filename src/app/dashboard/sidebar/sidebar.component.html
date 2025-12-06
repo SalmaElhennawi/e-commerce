@@ -1,0 +1,40 @@
+<aside class="sidebar" [class.mobile-open]="isOpen && isMobileView">
+  <div class="sidebar-header">
+    <div class="brand-title">
+      <h1><a routerLink="/dashboard/main">Off-White</a></h1>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-item">
+      <a routerLink="/dashboard/products" routerLinkActive="active" (click)="closeMobileMenu()">Products</a>
+    </div>
+
+    <div class="nav-item">
+      <a routerLink="/dashboard/promo-codes" routerLinkActive="active" (click)="closeMobileMenu()">Promo Codes</a>
+    </div>
+
+    <div class="nav-item">
+      <a routerLink="/dashboard/orders" routerLinkActive="active" (click)="closeMobileMenu()">Orders</a>
+    </div>
+
+    <div class="nav-item">
+      <a routerLink="/dashboard/users" routerLinkActive="active" (click)="closeMobileMenu()">Users</a>
+    </div>
+
+    <div class="nav-item">
+      <a routerLink="/dashboard/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-section" (click)="toggleAuthDropdown()">
+      <img src="../../../assets/icons/sign-out.png" class="user-icon">
+      <span>Account</span>
+    </div>
+
+    <div class="auth-dropdown" [class.active]="isAuthDropdownOpen">
+      <button (click)="logout()" class="logout-btn">Sign Out</button>
+    </div>
+  </div>
+</aside>

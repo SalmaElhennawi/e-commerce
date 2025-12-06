@@ -1,10 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Login, Register } from '../models/data-model';
+import { Login, Register, User } from '../models/data-model';
 import { LocalApiService } from './local-api.service';
 import { environment } from '../../environments/environment';
 import { HttpParams } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -80,5 +80,9 @@ export class UserService {
   localStorage.removeItem('user');
   this.isUserLoggedIn.next(false); 
   this.router.navigate(['/auth/user-login']);
+}
+
+getAllUsers(): Observable<User[]> {
+  return this.localApi.get(`${environment.localBaseUrl}/users`);
 }
 }

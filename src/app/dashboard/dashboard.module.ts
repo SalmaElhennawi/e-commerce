@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';;
 import { ProductsComponent } from './products/products.component';
 import { UsersComponent } from './users/users.component';
 import { OrdersComponent } from './orders/orders.component';
 import { MainComponent } from './main/main.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 // Angular Material Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -36,7 +36,7 @@ import { PromoCodesComponent } from './promo-codes/promo-codes.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavbarComponent,
+    SidebarComponent,
     ProductsComponent,
     UsersComponent,
     OrdersComponent,

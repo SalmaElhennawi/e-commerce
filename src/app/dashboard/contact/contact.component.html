@@ -1,0 +1,228 @@
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-4">Contact Messages Management</h2>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="row mb-4">
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h5 class="card-title">Total Messages</h5>
+          <h2 class="mb-0">{{ stats.total }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="card bg-danger text-white">
+        <div class="card-body">
+          <h5 class="card-title">Unread</h5>
+          <h2 class="mb-0">{{ stats.unread }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="card bg-warning text-dark">
+        <div class="card-body">
+          <h5 class="card-title">Read</h5>
+          <h2 class="mb-0">{{ stats.read }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <h5 class="card-title">Replied</h5>
+          <h2 class="mb-0">{{ stats.replied }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters and Search -->
+  <div class="row mb-4">
+    <div class="col-md-6 mb-3">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search messages..."
+          [(ngModel)]="searchKeyword"
+          (keyup.enter)="onSearch()"
+        />
+        <button class="btn btn-outline-primary" (click)="onSearch()">
+          <i class="bi bi-search"></i> Search
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <div class="input-group">
+        <label class="input-group-text" for="statusFilter">Status Filter</label>
+        <select
+          class="form-select"
+          id="statusFilter"
+          [(ngModel)]="statusFilter"
+          (change)="onStatusFilterChange()"
+        >
+          <option value="all">All Messages</option>
+          <option value="unread">Unread</option>
+          <option value="read">Read</option>
+          <option value="replied">Replied</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading and Error States -->
+  <div *ngIf="loading" class="text-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading messages...</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+    <button class="btn btn-sm btn-outline-danger ms-2" (click)="loadMessages()">
+      Retry
+    </button>
+  </div>
+
+  <!-- Messages List and Details -->
+  <div class="row">
+    <!-- Messages List -->
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Messages List ({{ filteredMessages.length }})</h5>
+        </div>
+        <div class="card-body p-0">
+          <div class="list-group list-group-flush">
+            <div
+              *ngFor="let message of filteredMessages"
+              class="list-group-item list-group-item-action"
+              [class.active]="selectedMessage?.id === message.id"
+              (click)="selectMessage(message)"
+            >
+              <div class="d-flex w-100 justify-content-between align-items-start">
+                <div>
+                  <h6 class="mb-1">
+                    {{ message.firstName }} {{ message.lastName }}
+                  </h6>
+                  <p class="mb-1 text-truncate" style="max-width: 250px;">
+                    {{ message.message }}
+                  </p>
+                  <small class="text-muted">{{ message.email }}</small>
+                </div>
+                <div class="text-end">
+                  <span [class]="getStatusBadgeClass(message.status)">
+                    {{ getStatusText(message.status) }}
+                  </span>
+                  <div class="mt-1">
+                    <small class="text-muted">
+                      {{ formatDate(message.submittedAt) }}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div *ngIf="filteredMessages.length === 0 && !loading" class="list-group-item text-center py-4">
+              <i class="bi bi-envelope display-6 text-muted mb-3"></i>
+              <p class="text-muted mb-0">No messages found</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Details -->
+    <div class="col-md-7">
+      <div class="card" *ngIf="selectedMessage; else noSelection">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Message Details</h5>
+          <div>
+            <button
+              class="btn btn-sm btn-outline-success me-2"
+              *ngIf="selectedMessage.status !== 'replied'"
+              (click)="markAsReplied(getMessageId(selectedMessage))"
+            >
+              <i class="bi bi-check-circle"></i> Mark as Replied
+            </button>
+            <button
+              class="btn btn-sm btn-outline-danger"
+              (click)="deleteMessage(getMessageId(selectedMessage))"
+            >
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Message Header -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label fw-bold">From:</label>
+                <p class="mb-1">{{ selectedMessage.firstName }} {{ selectedMessage.lastName }}</p>
+                <p class="mb-1 text-muted">{{ selectedMessage.email }}</p>
+                <p class="mb-0 text-muted" *ngIf="selectedMessage.phone">
+                  Phone: {{ selectedMessage.phone }}
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label fw-bold">Status & Date:</label>
+                <p class="mb-1">
+                  <span [class]="getStatusBadgeClass(selectedMessage.status)">
+                    {{ getStatusText(selectedMessage.status) }}
+                  </span>
+                </p>
+                <p class="mb-0 text-muted">
+                  Received: {{ formatDate(selectedMessage.submittedAt) }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message Content -->
+          <div class="mb-4">
+            <label class="form-label fw-bold">Message:</label>
+            <div class="border rounded p-3 bg-light">
+              <p class="mb-0">{{ selectedMessage.message }}</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="d-flex gap-2 mt-4">
+            <a
+              [href]="'mailto:' + selectedMessage.email"
+              class="btn btn-primary"
+            >
+              <i class="bi bi-reply"></i> Reply via Email
+            </a>
+            <button
+              class="btn btn-outline-secondary"
+              *ngIf="selectedMessage.phone"
+              (click)="copyPhoneNumber(selectedMessage.phone)"
+            >
+              <i class="bi bi-telephone"></i> Copy Phone Number
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noSelection>
+        <div class="card">
+          <div class="card-body text-center py-5">
+            <i class="bi bi-envelope-open display-4 text-muted mb-3"></i>
+            <h5 class="text-muted">Select a message to view details</h5>
+            <p class="text-muted">Click on any message from the list to see its details here</p>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

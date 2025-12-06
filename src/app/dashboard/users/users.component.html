@@ -1,1 +1,202 @@
-<p>users works!</p>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+<div class="admin-users-container">
+  <div class="header">
+    <h2><i class="bx bx-user-circle"></i> User Management</h2>
+    <div class="search-box">
+      <input 
+        type="text" 
+        placeholder="Search users by name, email, or phone..." 
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearch()"
+      >
+      <i class="bx bx-search"></i>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-cards">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="bx bx-user"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Total Users</h3>
+        <p class="stat-number">{{ totalUsers }}</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="bx bx-check-circle"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Active Today</h3>
+        <p class="stat-number">{{ getActiveUsersCount() }}</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="bx bx-calendar"></i>
+      </div>
+      <div class="stat-info">
+        <h3>New This Month</h3>
+        <p class="stat-number">{{ getNewUsersCount() }}</p>
+      </div>
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="loading-spinner">
+      <i class="bx bx-loader-alt bx-spin"></i>
+      <p>Loading users...</p>
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="error-alert">
+      <i class="bx bx-error-circle"></i>
+      <p>{{ errorMessage }}</p>
+    </div>
+  }
+
+  @if (!isLoading && !errorMessage) {
+    <div class="users-table-container">
+      <div class="table-header">
+        <div class="table-info">
+          <p><i class="bx bx-info-circle"></i> Showing {{ filteredUsers.length }} of {{ totalUsers }} users</p>
+          <button class="refresh-btn" (click)="loadUsers()" title="Refresh Data">
+            <i class="bx bx-refresh"></i> Refresh
+          </button>
+        </div>
+        <div class="table-actions">
+          <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()">
+            <option [value]="5">5 per page</option>
+            <option [value]="10">10 per page</option>
+            <option [value]="20">20 per page</option>
+            <option [value]="50">50 per page</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" (change)="toggleSelectAll($event)" [checked]="allSelected">
+              </th>
+              <th>User</th>
+              <th>Contact Info</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of paginatedUsers; track user.id) {
+              <tr [class.selected]="selectedUsers.has(user.id)">
+                <td>
+                  <input type="checkbox" 
+                    [checked]="selectedUsers.has(user.id)"
+                    (change)="toggleUserSelection(user.id, $event)"
+                  >
+                </td>
+                <td class="user-info">
+                  <div class="user-avatar">
+                    <i class="bx bx-user"></i>
+                  </div>
+                  <div class="user-details">
+                    <strong>{{ user.name }}</strong>
+                    <small>ID: {{ user.id }}</small>
+                  </div>
+                </td>
+                <td class="contact-info">
+                  <div class="contact-item">
+                    <i class="bx bx-envelope"></i>
+                    <span>{{ user.email }}</span>
+                  </div>
+                  <div class="contact-item">
+                    <i class="bx bx-phone"></i>
+                    <span>{{ user.phone || 'Not provided' }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="status-badge active">Active</span>
+                </td>
+                <td class="actions">
+                  <button class="btn-message" title="Send Message" (click)="sendMessage(user)">
+                    <i class="bx bx-message"></i>
+                    <span>Message</span>
+                  </button>
+                </td>
+              </tr>
+            }
+            @empty {
+              <tr>
+                <td colspan="5" class="no-data">
+                  <i class="bx bx-user-x"></i>
+                  <p>No users found</p>
+                  @if (searchTerm) {
+                    <small>Try adjusting your search terms</small>
+                  }
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Bulk Actions -->
+      @if (selectedUsers.size > 0) {
+        <div class="bulk-actions">
+          <div class="selected-count">
+            <i class="bx bx-check-circle"></i>
+            <span>{{ selectedUsers.size }} user(s) selected</span>
+          </div>
+          <div class="bulk-buttons">
+            <button class="btn-bulk-message" (click)="messageSelectedUsers()">
+              <i class="bx bx-message"></i> Message Selected
+            </button>
+            <button class="btn-clear-selection" (click)="clearSelection()">
+              <i class="bx bx-x"></i> Clear Selection
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Pagination -->
+      @if (totalPages > 1) {
+        <div class="pagination">
+          <button 
+            class="btn-prev"
+            [disabled]="currentPage === 1"
+            (click)="changePage(currentPage - 1)"
+          >
+            <i class="bx bx-chevron-left"></i> Previous
+          </button>
+          
+          <div class="page-numbers">
+            @for (page of getVisiblePages(); track page; let i = $index) {
+              @if (i > 0 && page - getVisiblePages()[i-1] > 1) {
+                <span class="ellipsis">...</span>
+              }
+              <button 
+                [class.active]="currentPage === page"
+                (click)="changePage(page)"
+              >
+                {{ page }}
+              </button>
+            }
+          </div>
+          
+          <button 
+            class="btn-next"
+            [disabled]="currentPage === totalPages"
+            (click)="changePage(currentPage + 1)"
+          >
+            Next <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

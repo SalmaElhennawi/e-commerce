@@ -1,1 +1,44 @@
-<p>blog works!</p>
+<div class="blog-container">
+  <!-- Hero Section -->
+  <div class="blog-hero">
+    <div class="hero-content">
+      <h1>Style Stories</h1>
+      <p>Discover the latest fashion trends, styling tips, and brand updates</p>
+    </div>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Blog Content -->
+  <div id="blog-content" class="blog-content-section">
+    <!-- Category Filter -->
+    <div class="category-filter">
+      <button 
+        *ngFor="let category of categories" 
+        class="category-btn"
+        [class.active]="selectedCategory === category"
+        (click)="filterByCategory(category)">
+        {{ category }}
+      </button>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="blog-grid">
+      <div *ngIf="filteredPosts.length === 0" class="no-posts">
+        <p>No posts found in this category.</p>
+      </div>
+
+      <div class="blog-card" *ngFor="let post of filteredPosts">
+        <div class="blog-image">
+          <img [src]="post.imageUrl" [alt]="post.title">
+          <span class="category-badge">{{ post.category }}</span>
+        </div>
+        <div class="blog-content">
+          <span class="post-date">{{ post.date }}</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt }}</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

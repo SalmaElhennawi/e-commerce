@@ -1,12 +1,58 @@
-<div class="responsive-height w-90 d-flex flex-column container align-items-center bg-gradient-custom shadow border-dark overflow-hidden position-relative">
-  <div class="TG d-flex flex-column align-items-start gap-5">
-    <p class="ST fs-6 m-0">LUXURIOUS</p>
-    <h1 class="BT">STYLISH LIFE</h1>
+<!-- Hero Section -->
+<div class="hero-section overflow-hidden position-relative w-100">
+  <div class="container h-100 position-relative">
+    
+    <!-- Layer 1: Typography -->
+    <div class="hero-text-layer d-flex flex-column justify-content-center h-100">
+      <p class="hero-subtitle mb-0">LUXURIOUS</p>
+      <h1 class="hero-title">STYLISH LIFE</h1>
+    </div>
+
+    <!-- Layer 2: Main Model Image -->
+    <div class="hero-image-layer">
+      <img class="img-fluid model-main"
+      src="../../../assets/images/Main Hero.png" alt="Stylish Model" />
+    </div>
+
+    <!-- Layer 3: Floating Details (Description & Polaroid) -->
+    <div class="hero-details-layer w-100 h-100">
+      
+      <!-- Left Description -->
+      <div class="hero-desc">
+        <p>The fashion industry statistics show that the apparel and textile sector is the 4th biggest in the world.</p>
+      </div>
+
+      <!-- Right Polaroid with Badge -->
+      <div class="hero-polaroid-wrapper">
+        <div class="polaroid-card">
+          <!-- Using a placeholder for the secondary image since it wasn't provided, replace src as needed -->
+          <img src="../../../assets/images/Sec Hero.png" alt="Next Level Fashion" class="polaroid-img">
+        </div>
+        
+        <!-- Animated Badge/Sticker -->
+        <div class="badge-sticker">
+          <div class="badge-icon">
+            <i class="fa-solid fa-thumbtack"></i>
+          </div>
+          <!-- SVG for curved text -->
+          <svg class="badge-text-spinner" viewBox="0 0 100 100">
+            <defs>
+              <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+            </defs>
+            <text>
+              <textPath xlink:href="#circlePath" startOffset="0%">
+                IMAGINE NEXT LEVEL OF FASHION •
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <img class="img-T position-absolute img-fluid w-30"
-  src="../../../assets/images/no-background-home-image.png" alt="person" />
 </div>
 
+<!-- Product Section (Kept as is) -->
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="fw-bold mb-0">{{ 'NEW_ARRIVAL' | translate }}</h1>
@@ -31,13 +77,13 @@
           <div class="card-body">
             <div class="name-heart-container">
             <h3 class="product-name">{{ product.name }}</h3>
-      <i 
-  class="fa-regular fa-heart heart-icon" 
-  [class.favorited]="isProductInWishlist(product.id)"
-  [class.fa-solid]="isProductInWishlist(product.id)"
-  (click)="toggleWishlist(product)">
-</i>
-    </div>
+            <i 
+              class="fa-regular fa-heart heart-icon" 
+              [class.favorited]="isProductInWishlist(product.id)"
+              [class.fa-solid]="isProductInWishlist(product.id)"
+              (click)="toggleWishlist(product)">
+            </i>
+          </div>
             <p class="product-price">${{ product.price | number }}</p>
           </div>
           <button class="add-to-cart-btn" (click)="addToCart(product)">

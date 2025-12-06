@@ -1,9 +1,77 @@
 <div class="dashboard-container">
-  <div class="dashboard-header">
-    <h1>Welcome to Your Dashboard</h1>
-    <p class="subheader">Manage your e-commerce activities</p>
+  <!-- Top Header -->
+  <div class="top-header">
+    <div class="header-left">
+      <h1>E-Commerce Dashboard</h1>
+      <p class="subheader">Welcome back, Administrator</p>
+    </div>
+    <div class="header-right">
+      <div class="header-actions">
+        <div class="notification-badge">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+        <div class="user-avatar">JD</div>
+      </div>
+    </div>
   </div>
 
+  <!-- Stats Overview -->
+  <div class="stats-overview">
+    <div class="stat-card">
+      <div class="stat-icon bg-primary">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <div class="stat-content">
+        <h3>$12,450</h3>
+        <p>Total Revenue</p>
+      </div>
+      <div class="stat-trend positive">
+        <i class="fas fa-arrow-up"></i> 12.5%
+      </div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon bg-success">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+      <div class="stat-content">
+        <h3>{{stats.orders.week}}</h3>
+        <p>Weekly Orders</p>
+      </div>
+      <div class="stat-trend positive">
+        <i class="fas fa-arrow-up"></i> 8.2%
+      </div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon bg-warning">
+        <i class="fas fa-eye"></i>
+      </div>
+      <div class="stat-content">
+        <h3>3.2K</h3>
+        <p>Site Visitors</p>
+      </div>
+      <div class="stat-trend negative">
+        <i class="fas fa-arrow-down"></i> 2.1%
+      </div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon bg-accent">
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="stat-content">
+        <h3>4.8</h3>
+        <p>Avg. Rating</p>
+      </div>
+      <div class="stat-trend positive">
+        <i class="fas fa-arrow-up"></i> 0.3%
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Dashboard Grid -->
   <div class="dashboard-grid">
     <!-- Products Card -->
     <div class="dashboard-card card-primary">
@@ -11,41 +79,51 @@
         <div class="card-icon">
           <i class="fas fa-boxes"></i>
         </div>
-        <h3> Products</h3>
+        <h3>Products</h3>
+        <span class="card-badge">{{stats.products.total}} items</span>
       </div>
       
       <div class="progress-container">
         <div class="progress-item">
           <div class="progress-label">
             <span>Published</span>
-            <span>50%</span>
+            <span>{{stats.products.published}}%</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill bg-success" style="width: 50%"></div>
+            <div class="progress-fill bg-success" [style.width.%]="stats.products.published"></div>
           </div>
         </div>
         
         <div class="progress-item">
           <div class="progress-label">
             <span>Inactive</span>
-            <span>15%</span>
+            <span>{{stats.products.inactive}}%</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill bg-info" style="width: 15%"></div>
+            <div class="progress-fill bg-info" [style.width.%]="stats.products.inactive"></div>
           </div>
         </div>
         
         <div class="progress-item">
           <div class="progress-label">
             <span>Draft</span>
-            <span>25%</span>
+            <span>{{stats.products.draft}}%</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill bg-warning" style="width: 25%"></div>
+            <div class="progress-fill bg-warning" [style.width.%]="stats.products.draft"></div>
           </div>
         </div>
       </div>
-       </div>
+      
+      <div class="card-footer">
+        <button class="btn btn-outline">
+          <i class="fas fa-eye"></i> View All
+        </button>
+        <button class="btn btn-primary">
+          <i class="fas fa-plus"></i> Add New
+        </button>
+      </div>
+    </div>
     
     <!-- Orders Card -->
     <div class="dashboard-card card-secondary">
@@ -53,20 +131,31 @@
         <div class="card-icon">
           <i class="fas fa-clipboard-list"></i>
         </div>
-        <h3> Orders</h3>
+        <h3>Orders</h3>
+        <span class="card-badge card-badge-warning">{{stats.orders.pending}} pending</span>
       </div>
-      <p class="card-description">Track and manage customer orders</p>
+      <p class="card-description">Track and manage customer orders efficiently</p>
       <div class="card-stats">
         <div class="stat-item">
-          <span class="stat-value">24</span>
+          <span class="stat-value">{{stats.orders.today}}</span>
           <span class="stat-label">New Today</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">128</span>
+          <span class="stat-value">{{stats.orders.week}}</span>
           <span class="stat-label">This Week</span>
         </div>
+        <div class="stat-item">
+          <span class="stat-value">94%</span>
+          <span class="stat-label">Success Rate</span>
+        </div>
       </div>
-       </div>
+      
+      <div class="card-footer">
+        <button class="btn btn-outline">
+          <i class="fas fa-list"></i> View Orders
+        </button>
+      </div>
+    </div>
     
     <!-- Users Card -->
     <div class="dashboard-card card-accent">
@@ -74,21 +163,174 @@
         <div class="card-icon">
           <i class="fas fa-users"></i>
         </div>
-        <h3> Users</h3>
+        <h3>Users</h3>
+        <span class="card-badge">{{stats.users.active}} active</span>
       </div>
-      <p class="card-description">Manage your customer base</p>
+      <p class="card-description">Manage your growing customer base</p>
       <div class="card-stats">
         <div class="stat-item">
-          <span class="stat-value">42</span>
+          <span class="stat-value">{{stats.users.month}}</span>
           <span class="stat-label">New This Month</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">1.2K</span>
+          <span class="stat-value">{{stats.users.total}}</span>
           <span class="stat-label">Total Users</span>
         </div>
+        <div class="stat-item">
+          <span class="stat-value">82%</span>
+          <span class="stat-label">Retention</span>
+        </div>
+      </div>
+      
+      <div class="card-footer">
+        <button class="btn btn-outline">
+          <i class="fas fa-user-plus"></i> Invite Users
+        </button>
       </div>
     </div>
     
-    <!-- Additional cards can be added here -->
+    <!-- Promo Codes Card -->
+    <div class="dashboard-card card-success">
+      <div class="card-header">
+        <div class="card-icon">
+          <i class="fas fa-tags"></i>
+        </div>
+        <h3>Promo Codes</h3>
+        <span class="card-badge">{{stats.promoCodes.active}} active</span>
+      </div>
+      <p class="card-description">Manage discount codes and promotions</p>
+      <div class="card-stats">
+        <div class="stat-item">
+          <span class="stat-value">{{stats.promoCodes.active}}</span>
+          <span class="stat-label">Active Codes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{stats.promoCodes.total}}</span>
+          <span class="stat-label">Total Codes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{stats.promoCodes.usage}}</span>
+          <span class="stat-label">Times Used</span>
+        </div>
+      </div>
+      
+      <div class="recent-codes">
+        <div class="code-item">
+          <span class="code">SUMMER25</span>
+          <span class="code-status active">Active</span>
+        </div>
+        <div class="code-item">
+          <span class="code">WELCOME10</span>
+          <span class="code-status expired">Expired</span>
+        </div>
+      </div>
+      
+      <div class="card-footer">
+        <button class="btn btn-success">
+          <i class="fas fa-plus"></i> Create Code
+        </button>
+      </div>
+    </div>
+    
+    <!-- Contact Card -->
+    <div class="dashboard-card card-info">
+      <div class="card-header">
+        <div class="card-icon">
+          <i class="fas fa-address-book"></i>
+        </div>
+        <h3>Contact Messages</h3>
+        <span class="card-badge card-badge-warning">{{stats.contacts.new}} new</span>
+      </div>
+      <p class="card-description">Manage customer inquiries and support tickets</p>
+      <div class="card-stats">
+        <div class="stat-item">
+          <span class="stat-value">{{stats.contacts.total}}</span>
+          <span class="stat-label">Total Messages</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{stats.contacts.resolved}}</span>
+          <span class="stat-label">Resolved</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">93%</span>
+          <span class="stat-label">Satisfaction</span>
+        </div>
+      </div>
+      
+      <div class="recent-messages">
+        <div class="message-item">
+          <div class="message-header">
+            <span class="message-sender">John Smith</span>
+            <span class="message-time">2 hours ago</span>
+          </div>
+          <p class="message-preview">Product inquiry about shipping...</p>
+        </div>
+        <div class="message-item">
+          <div class="message-header">
+            <span class="message-sender">Emma Wilson</span>
+            <span class="message-time">5 hours ago</span>
+          </div>
+          <p class="message-preview">Order #4567 issue with payment...</p>
+        </div>
+      </div>
+      
+      <div class="card-footer">
+        <button class="btn btn-outline">
+          <i class="fas fa-envelope"></i> View Messages
+        </button>
+      </div>
+    </div>
+    
+    <!-- Recent Activity Card -->
+    <div class="dashboard-card card-dark">
+      <div class="card-header">
+        <div class="card-icon">
+          <i class="fas fa-history"></i>
+        </div>
+        <h3>Recent Activity</h3>
+      </div>
+      
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-icon success">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="activity-content">
+            <p>New order #7890 placed</p>
+            <span class="activity-time">10 minutes ago</span>
+          </div>
+        </div>
+        
+        <div class="activity-item">
+          <div class="activity-icon primary">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <div class="activity-content">
+            <p>New user registered</p>
+            <span class="activity-time">1 hour ago</span>
+          </div>
+        </div>
+        
+        <div class="activity-item">
+          <div class="activity-icon warning">
+            <i class="fas fa-exclamation-circle"></i>
+          </div>
+          <div class="activity-content">
+            <p>Low stock alert for "Product A"</p>
+            <span class="activity-time">3 hours ago</span>
+          </div>
+        </div>
+        
+        <div class="activity-item">
+          <div class="activity-icon accent">
+            <i class="fas fa-tag"></i>
+          </div>
+          <div class="activity-content">
+            <p>New promo code created</p>
+            <span class="activity-time">5 hours ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

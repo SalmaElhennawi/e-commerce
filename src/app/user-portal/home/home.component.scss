@@ -1,86 +1,271 @@
-.bg-gradient-custom{
-    background: linear-gradient(to top, #9295ad70, #8b92dc);
+/* --- HERO SECTION STYLES --- */
+
+.hero-section {
+  /* Solid purple background matching PDF */
+  background-color: #5d60bc; 
+  height: 85vh;
+  min-height: 600px;
+  width: 100%;
 }
 
-.ST{
-    color: #ffffff;
+/* Layer 1: Text Behind Model */
+.hero-text-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding-top: 5vh;
 }
 
-.BT{
-    font-size: 45px;
-    color: #ffffff;
-    text-align: start;
-}
-
-.TG{
-    margin-top: 30px;
-}
-
-.img-T{
-    margin-top: 60px;
-}
-
-.responsive-height{
-    height: 400px;
-}
-
-@media (min-width: 768px) {
-    .BT{
-        font-size: 100px;
-    }
-    .responsive-height{
-        height: 500px;
-    }
-}
-
-@media (min-width: 992px) {
-    .BT{
-        font-size: 140px;
-    }
-}
-
-.home-title,
-.home-bottom-text {
-  display: none;
-}
-
-.view-all-link {
-  color: #000;
+.hero-subtitle {
+  color: #ffffff;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  margin-left: 20px;
+  padding-bottom: 20px;
   
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
+}
+
+.hero-title {
+  color: #ffffff;
+  font-size: 18vw; /* Responsive huge font */
+  line-height: 0.8;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+/* Layer 2: Main Model Image */
+.hero-image-layer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 85%; /* Adjust height of model relative to container */
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+}
+
+.model-main {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Layer 3: Details (Desc & Polaroid) */
+.hero-details-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  pointer-events: none; /* Allows clicking through to elements below if needed */
+}
+
+/* Description Text */
+.hero-desc {
+  position: absolute;
+  bottom: 10%;
+  left: 20px;
+  max-width: 300px;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.6;
+  pointer-events: auto;
+}
+
+/* Polaroid Wrapper */
+.hero-polaroid-wrapper {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  pointer-events: auto;
+}
+
+.polaroid-card {
+  background: white;
+  padding: 10px 10px 30px 10px; /* Polaroid bottom padding */
+  transform: rotate(-5deg);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.polaroid-card:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.polaroid-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  filter: grayscale(20%);
+}
+
+/* Badge/Sticker Styles */
+.badge-sticker {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.badge-icon {
+  position: absolute;
+  color: #5d60bc;
+  font-size: 1.5rem;
+  z-index: 2;
+}
+
+.badge-text-spinner {
+  width: 100%;
+  height: 100%;
+  animation: spin 10s linear infinite;
+}
+
+.badge-text-spinner text {
+  font-size: 13px;
+  font-family: monospace;
+  font-weight: bold;
+  letter-spacing: 2px;
+  fill: #333;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Desktop refinements */
+@media (min-width: 992px) {
+  .hero-title {
+    font-size: 14vw; 
+    text-align: center;
   }
 }
 
+/* Tablet / Smaller Desktop */
+@media (max-width: 991px) {
+  .hero-title {
+    font-size: 16vw;
+  }
+  .hero-desc {
+    bottom: 50px;
+    font-size: 0.9rem;
+    max-width: 250px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    min-height: 800px;
+    padding-bottom: 50px;
+  }
+
+  .hero-text-layer {
+    position: relative;
+    height: auto;
+    padding-top: 60px;
+    text-align: center;
+  }
+  
+  .hero-subtitle {
+    margin-left: 0;
+  }
+
+  .hero-image-layer {
+    position: relative;
+    height: 400px;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    justify-content: center;
+    margin-top: -50px; /* Pull image up into text */
+  }
+
+  .hero-details-layer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .hero-desc {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-polaroid-wrapper {
+    position: relative;
+    bottom: auto;
+    right: auto;
+  }
+}
+
+/* --- EXISTING PRODUCT STYLES (Kept as requested) --- */
+.view-all-link {
+  color: #000;
+}
+@media (max-width: 768px) {
+  .view-all-link { font-size: 0.9rem; }
+}
 .cards-slider-container {
   position: relative;
   overflow: hidden;
   width: 100%;
 }
-
 .cards-grid {
   display: flex;
   gap: 1.5rem;
   transition: transform 0.5s ease;
   will-change: transform;
   padding: 0.5rem 0;
-
-  .product-card {
-    flex: 0 0 calc(100% - 1rem);
-    min-width: calc(100% - 1rem);
-
-    @media (min-width: 768px) {
-      flex: 0 0 calc(50% - 1rem);
-      min-width: calc(50% - 1rem);
-    }
-
-    @media (min-width: 992px) {
-      flex: 0 0 calc(25% - 1rem);
-      min-width: calc(25% - 1rem);
-    }
+}
+.cards-grid .product-card {
+  flex: 0 0 calc(100% - 1rem);
+  min-width: calc(100% - 1rem);
+}
+@media (min-width: 768px) {
+  .cards-grid .product-card {
+    flex: 0 0 calc(50% - 1rem);
+    min-width: calc(50% - 1rem);
   }
 }
-
+@media (min-width: 992px) {
+  .cards-grid .product-card {
+    flex: 0 0 calc(25% - 1rem);
+    min-width: calc(25% - 1rem);
+  }
+}
 .product-card {
   background: white;
   border-radius: 8px;
@@ -90,20 +275,17 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
 }
-
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
 .card-image-container {
   position: relative;
   padding-top: 125%; 
   overflow: hidden;
   cursor: pointer;
 }
-
 .card-image {
   position: absolute;
   top: 0;
@@ -112,19 +294,14 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 }
-
+.card-image:hover { transform: scale(1.05); }
 .card-body {
   padding: 1.25rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-
 .product-name {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
@@ -134,14 +311,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .product-price {
   font-size: 1.25rem;
   font-weight: 600;
   color: royalblue;
   margin-top: auto;
 }
-
 .add-to-cart-btn {
   background: #000;
   color: white;
@@ -153,16 +328,9 @@
   transition: background 0.2s ease;
   width: 100%;
   margin-top: auto;
-
-  &:hover {
-    background: #333;
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
 }
-
+.add-to-cart-btn:hover { background: #333; }
+.add-to-cart-btn:active { transform: scale(0.98); }
 .scroll-btn-inline {
   background: #f8f9fa;
   border: 1px solid #dee2e6;
@@ -175,35 +343,24 @@
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
-  
-  &:hover {
-    background: #e9ecef;
-    transform: scale(1.05);
-  }
-  
-  @media (max-width: 576px) {
-    width: 35px;
-    height: 35px;
-  }
 }
-
+.scroll-btn-inline:hover {
+  background: #e9ecef;
+  transform: scale(1.05);
+}
+@media (max-width: 576px) {
+  .scroll-btn-inline { width: 35px; height: 35px; }
+}
 .name-heart-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .heart-icon {
   cursor: pointer;
   font-size: 1.2rem;
   color: #ccc;
   transition: color 0.3s;
 }
-
-.heart-icon:hover {
-  color: #ff0000;
-}
-
-.heart-icon.favorited {
-  color: #ff0000;
-}
+.heart-icon:hover { color: #ff0000; }
+.heart-icon.favorited { color: #ff0000; }

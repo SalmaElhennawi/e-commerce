@@ -1,48 +1,68 @@
 <div class="login-container">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-  <div class="routing-button">
-  <button><a href="/auth/seller-login">Switch to Seller</a></button>
-</div>
+  <div class="login-card">
 
-  <div class="wrapper">
-    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-      <h1>User Login</h1>
-      
-      <div class="input-box">
-        <input id="email" type="email" placeholder="Email" name="email" ngModel required email #email="ngModel" />
-        <i class='bx bxs-user'></i>
+    <!-- LEFT IMAGE SIDE -->
+    <div class="login-image">
+      <img src="../../../assets/images/login.png" alt="Seller Login Illustration" />
+    </div>
+
+    <!-- RIGHT FORM SIDE -->
+    <div class="login-form">
+
+      <div class="routing-button">
+        <button><a href="/auth/seller-login">Switch to Seller</a></button>
       </div>
-      
-      <div class="input-box">
-  <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Password" name="password" ngModel required #password="ngModel" minlength="6" />
-  <i class='bx bxs-lock-alt'></i>
-  <i class='bx {{ showPassword ? "bxs-hide" : "bxs-show" }}' (click)="togglePassword()" style="right: 45px; cursor: pointer;"></i>
-</div>
-      
-      <button type="submit" class="btn" [disabled]="form?.invalid || isLoading">
-  Login
-  @if (isLoading) {
-    <i class='bx bx-loader-alt bx-spin'></i>
-  }
-</button>
-      
+
+      <h2>User Login</h2>
+
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+        <!-- EMAIL INPUT -->
+        <div class="input-group">
+          <i class="bx bxs-envelope input-icon"></i>
+          <input type="email" placeholder="Email" name="email" ngModel required email #email="ngModel">
+        </div>
+
+        @if (email.touched && email.dirty && email.invalid){
+        <p class="control-error">Invalid email address entered.</p>
+        }
+
+        <!-- PASSWORD INPUT -->
+        <div class="input-group password-group">
+          <i class="bx bxs-lock-alt input-icon"></i>
+          <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" name="password" ngModel required
+            minlength="6" #password="ngModel" />
+          <span class="toggle-icon" (click)="togglePassword()">
+            <i class="bx" [ngClass]="showPassword ? 'bxs-show' : 'bxs-hide'"></i>
+          </span>
+        </div>
+
+        @if (password.touched && password.dirty && password.invalid){
+        <p class="control-error">Invalid password entered - must be at least 6 characters long.</p>
+        }
+
+        <!-- LOGIN BUTTON -->
+        <button type="submit" class="btn-primary" [disabled]="form?.invalid || isLoading">
+          Login
+          @if (isLoading) {
+          <i class='bx bx-loader-alt bx-spin'></i>
+          }
+        </button>
+
+        <!-- ERROR MESSAGE -->
+        @if (errorMsg) {
+        <div class="alert alert-danger">{{errorMsg}}</div>
+        }
+
+         
       <div class="register-link">
         <p>Don't have an account? <a href="/auth/user-register">Register</a></p>
       </div>
 
-      @if (email.touched && email.dirty && email.invalid){
-        <p class="control-error">Invalid email address entered.</p>
-      }
+      </form>
+    </div>
 
-      @if (password.touched && password.dirty && password.invalid){
-        <p class="control-error">Invalid password entered - must be at least 6 characters long.</p>
-      }
-
-         @if (errorMsg) {
-  <div class="alert alert-danger">{{errorMsg}}</div>
-}
-
-    </form>
   </div>
 </div>

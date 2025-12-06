@@ -1,2 +1,33 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<div class="dashboard-container">
+  
+  <!-- Mobile Header -->
+  <header class="mobile-header" *ngIf="isMobileView">
+    <button class="mobile-menu-btn" (click)="toggleSidebar()" 
+            [attr.aria-expanded]="isSidebarOpen" aria-label="Toggle sidebar">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </button>
+    <div class="mobile-brand">
+      <h1>Off-White</h1>
+    </div>
+  </header>
+
+  <!-- MOBILE OVERLAY (moved before sidebar) -->
+  <div class="mobile-overlay" 
+       [class.active]="isSidebarOpen && isMobileView"
+       (click)="onSidebarToggled(false)">
+  </div>
+
+  <!-- SIDEBAR -->
+  <app-sidebar 
+     [isOpen]="isSidebarOpen"
+     (sidebarToggled)="onSidebarToggled($event)">
+  </app-sidebar>
+
+  <!-- CONTENT -->
+  <main class="main-content" [class.sidebar-open]="isSidebarOpen && isMobileView">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

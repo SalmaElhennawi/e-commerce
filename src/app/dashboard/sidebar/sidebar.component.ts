@@ -1,56 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { SellerService } from '../../services/seller.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class SidebarComponent implements OnInit {
+  @Input() isOpen = false; // Add input for sidebar state
   isAuthDropdownOpen = false;
-  isMobileMenuOpen = false;
   isSellerLoggedIn = false;
+  isMobileView = false;
+  
+  @Output() sidebarToggled = new EventEmitter<boolean>();
   
   constructor(
     private _Router: Router,
     private sellerService: SellerService
   ) {}
-
+  
   ngOnInit(): void {
+    this.checkViewport();
     this.isSellerLoggedIn = !!localStorage.getItem('seller');
     this.sellerService.isSellerLoggedIn.subscribe((isLoggedIn) => {
       this.isSellerLoggedIn = isLoggedIn;
     });
   }
   
-
-   toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    if (this.isMobileMenuOpen) {
-    }
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkViewport();
   }
-
+  
+  checkViewport() {
+    this.isMobileView = window.innerWidth <= 768;
+  }
+  
+  toggleSidebar() {
+    this.sidebarToggled.emit(!this.isOpen);
+  }
+  
   closeMobileMenu() {
-    this.isMobileMenuOpen = false;
+    this.sidebarToggled.emit(false);
   }
-
-   toggleAuthDropdown() {
+  
+  toggleAuthDropdown() {
     this.isAuthDropdownOpen = !this.isAuthDropdownOpen;
-    if (this.isAuthDropdownOpen) {
-      this.isMobileMenuOpen = false;
-    }
   }
-
+  
   closeAuthDropdown() {
     this.isAuthDropdownOpen = false;
   }
-
-
+  
   logout(): void {
     this.sellerService.signOut();
     this.closeAuthDropdown();
     this.closeMobileMenu();
   }
-
 }

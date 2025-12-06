@@ -35,7 +35,7 @@ export interface order {
   address: string;
   contact: string;
   totalPrice: number;
-  userId: number | string;
+  userId: string;
   items: cart[];
   paymentMethod: string;
   orderDate?: string; 
@@ -48,3 +48,13 @@ export interface wishlist{
   userId: number | string;  
 }
 
+export interface ContactMessage {
+  id?: string;
+  firstName: string;
+  lastName?: string;
+  email: string;
+  phone?: string;
+  message: string;
+  submittedAt: string | Date;
+  status?: 'unread' | 'read' | 'replied';
+}

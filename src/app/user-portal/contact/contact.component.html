@@ -1,82 +1,209 @@
 <div class="contact-container">
-   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <div class="contact__wrapper shadow-lg">
+    
+    <!-- Success Message -->
+    <div *ngIf="submitSuccess" class="alert alert-success alert-dismissible fade show m-3" role="alert">
+      <div class="d-flex align-items-center">
+        <i class="fas fa-check-circle me-2 fa-lg"></i>
+        <div>
+          <strong>Success!</strong> Thank you for your message We'll get back to you soon
+        </div>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="submitSuccess = false"></button>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="submitError" class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+      <div class="d-flex align-items-center">
+        <i class="fas fa-exclamation-circle me-2 fa-lg"></i>
+        <div>
+          <strong>Error!</strong> {{ errorMessage }}
+        </div>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="submitError = false"></button>
+    </div>
+
     <div class="row no-gutters">
       <!-- Contact Info Section -->
       <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
-        <h3 class="color--white mb-5">Get In Touch</h3>
+        <div class="contact-info__content">
+          <h3 class="color--white mb-4">Get In Touch</h3>
+          
+          <p class="color--white mb-4 opacity-75">
+            Have questions or feedback? We'd love to hear from you Send us a message and we'll respond as soon as possible
+          </p>
 
-        <ul class="contact-info__list list-style--none position-relative">
-          <li class="mb-4 pl-4">
-            <span class="position-absolute"><i class="fas fa-envelope"></i></span>
-            <span class="ms-4">contact&#64;example.com</span>
-          </li>
-          <li class="mb-4 pl-4">
-            <span class="position-absolute"><i class="fas fa-phone"></i></span>
-            <span class="ms-4">+20 (123) 456-7890</span>
-          </li>
-          <li class="mb-4 pl-4">
-            <span class="position-absolute"><i class="fas fa-map-marker-alt"></i></span>
-            <span class="ms-4">
-              123 Business Avenue<br>
-              Suite 200<br>
-              Cairo , Egypt
-            </span>
-            <div class="mt-3">
-              <a href="https://www.google.com/maps" target="_blank"
-                class="text-link link--right-icon text-white">
-                Get Directions <i class="link__icon fas fa-directions"></i>
-              </a>
-            </div>
-          </li>
-        </ul>
+          <div class="contact-details">
+            <ul class="contact-info__list list-style--none position-relative">
+              <li class="mb-4 d-flex align-items-start">
+                <div class="contact-icon me-3">
+                  <i class="fas fa-envelope fa-lg"></i>
+                </div>
+                <div>
+                  <h6 class="color--white mb-1">Email</h6>
+                  <span class="color--white opacity-75">contact&#64;example.com</span>
+                </div>
+              </li>
+              
+              <li class="mb-4 d-flex align-items-start">
+                <div class="contact-icon me-3">
+                  <i class="fas fa-phone fa-lg"></i>
+                </div>
+                <div>
+                  <h6 class="color--white mb-1">Phone</h6>
+                  <span class="color--white opacity-75">+20 (123) 456-7890</span>
+                </div>
+              </li>
+              
+              <li class="mb-4 d-flex align-items-start">
+                <div class="contact-icon me-3">
+                  <i class="fas fa-map-marker-alt fa-lg"></i>
+                </div>
+                <div>
+                  <h6 class="color--white mb-1">Address</h6>
+                  <span class="color--white opacity-75">
+                    123 Business Avenue<br>
+                    Suite 200<br>
+                    Cairo, Egypt
+                  </span>
+                  <div class="mt-2">
+                    <a href="https://www.google.com/maps" target="_blank"
+                      class="btn btn-outline-light btn-sm mt-2">
+                      <i class="fas fa-directions me-1"></i> Get Directions
+                    </a>
+                  </div>
+                </div>
+              </li>
+              
+              <li class="mb-4 d-flex align-items-start">
+                <div class="contact-icon me-3">
+                  <i class="fas fa-clock fa-lg"></i>
+                </div>
+                <div>
+                  <h6 class="color--white mb-1">Business Hours</h6>
+                  <span class="color--white opacity-75">
+                    Mon-Fri: 9AM-6PM<br>
+                    Sat: 10AM-4PM
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!-- Contact Form Section -->
       <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
-        <form action="#" class="contact-form">
+        <h3 class="mb-4">Send us a Message</h3>
+        
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" novalidate>
           <div class="row">
+            <!-- First Name -->
             <div class="col-sm-6 mb-3">
               <div class="form-group">
                 <label class="required-field" for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                <input type="text" class="form-control" id="firstName" 
+                       formControlName="firstName"
+                       placeholder="Enter your first name"
+                       [class.is-invalid]="firstName?.invalid && firstName?.touched">
+                <div *ngIf="firstName?.invalid && firstName?.touched" class="invalid-feedback d-block">
+                  <div *ngIf="firstName?.errors?.['required']">First name is required</div>
+                  <div *ngIf="firstName?.errors?.['minlength']">
+                    Minimum {{firstName?.errors?.['minlength']?.requiredLength}} characters required
+                  </div>
+                  <div *ngIf="firstName?.errors?.['maxlength']">
+                    Maximum {{firstName?.errors?.['maxlength']?.requiredLength}} characters allowed
+                  </div>
+                </div>
               </div>
             </div>
 
+            <!-- Last Name -->
             <div class="col-sm-6 mb-3">
               <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName">
+                <input type="text" class="form-control" id="lastName" 
+                       formControlName="lastName"
+                       placeholder="Enter your last name"
+                       [class.is-invalid]="lastName?.invalid && lastName?.touched">
+                <div *ngIf="lastName?.invalid && lastName?.touched" class="invalid-feedback d-block">
+                  <div *ngIf="lastName?.errors?.['maxlength']">
+                    Maximum {{lastName?.errors?.['maxlength']?.requiredLength}} characters allowed
+                  </div>
+                </div>
               </div>
             </div>
 
+            <!-- Email -->
             <div class="col-sm-6 mb-3">
               <div class="form-group">
-                <label class="required-field" for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <label class="required-field" for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" 
+                       formControlName="email"
+                       placeholder="Enter your email"
+                       [class.is-invalid]="email?.invalid && email?.touched">
+                <div *ngIf="email?.invalid && email?.touched" class="invalid-feedback d-block">
+                  <div *ngIf="email?.errors?.['required']">Email is required</div>
+                  <div *ngIf="email?.errors?.['email']">Please enter a valid email address</div>
+                  <div *ngIf="email?.errors?.['maxlength']">
+                    Maximum {{email?.errors?.['maxlength']?.requiredLength}} characters allowed
+                  </div>
+                </div>
               </div>
             </div>
 
+            <!-- Phone -->
             <div class="col-sm-6 mb-3">
               <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" class="form-control" id="phone" name="phone">
+                <label for="phone">Phone Number (Optional)</label>
+                <input type="tel" class="form-control" id="phone" 
+                       formControlName="phone"
+                       placeholder="Enter your phone number"
+                       [class.is-invalid]="phone?.invalid && phone?.touched">
+                <div *ngIf="phone?.invalid && phone?.touched" class="invalid-feedback d-block">
+                  <div *ngIf="phone?.errors?.['pattern']">Please enter a valid phone number</div>
+                  <div *ngIf="phone?.errors?.['maxlength']">
+                    Maximum {{phone?.errors?.['maxlength']?.requiredLength}} characters allowed
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="col-sm-12 mb-3">
+            <!-- Message -->
+            <div class="col-sm-12 mb-4">
               <div class="form-group">
                 <label class="required-field" for="message">Your Message</label>
-                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                <textarea class="form-control" id="message" formControlName="message" rows="5"
+                          placeholder="Please enter your message here"
+                          [class.is-invalid]="message?.invalid && message?.touched"></textarea>
+                <div class="form-text">Minimum 10 characters required</div>
+                <div *ngIf="message?.invalid && message?.touched" class="invalid-feedback d-block">
+                  <div *ngIf="message?.errors?.['required']">Message is required</div>
+                  <div *ngIf="message?.errors?.['minlength']">
+                    Minimum {{message?.errors?.['minlength']?.requiredLength}} characters required
+                  </div>
+                  <div *ngIf="message?.errors?.['maxlength']">
+                    Maximum {{message?.errors?.['maxlength']?.requiredLength}} characters allowed
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="col-sm-12 mb-3">
-              <button type="submit" class="btn btn-primary w-100 py-2">
-                <i class="fas fa-paper-plane me-2"></i> Send Message
+            <!-- Submit Button -->
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary w-100 py-3" 
+                      [disabled]="isSubmitting || contactForm.invalid">
+                <span *ngIf="!isSubmitting">
+                  <i class="fas fa-paper-plane me-2"></i> Send Message
+                </span>
+                <span *ngIf="isSubmitting">
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  Sending Message
+                </span>
               </button>
+              <p class="text-muted text-center mt-3 small">
+                <i class="fas fa-lock me-1"></i> Your information is secure and will not be shared
+              </p>
             </div>
           </div>
         </form>

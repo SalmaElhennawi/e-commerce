@@ -231,12 +231,19 @@
       }
     }
 
+     &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
     &.active {
       color: #ffffff;
-      background-color: #4285f4;
-      box-shadow: 0 4px 6px rgba(66, 133, 244, 0.2);
-
-      @media (max-width: 992px) {
+      background-color: #000000;
+       @media (max-width: 992px) {
+        box-shadow: none;
+      }
+      &:focus {
+        outline: none;
         box-shadow: none;
       }
     }
@@ -286,7 +293,7 @@
   }
 
   button {
-    background-color: #080808;
+    background-color: #000000;
     color: white;
     border: none;
     padding: 7px 10px;
@@ -296,7 +303,7 @@
     font-size: 0.9rem;
 
     &:hover {
-      background-color: #070707;
+      background-color: #333333;
     }
   }
 
@@ -317,10 +324,10 @@
 
 .search-bar-container {
   button {
-    background-color: #090909;
+    background-color: #000000;
 
     &:hover {
-      background-color: #040404;
+      background-color: #333333;
     }
   }
 }
@@ -412,9 +419,9 @@
     }
 
     &.active {
-      background: #007bff;
+      background: #000000;
       color: white;
-      border-color: #007bff;
+      border-color: #000000;
     }
 
     @media (max-width: 768px) {

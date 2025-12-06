@@ -7,7 +7,86 @@
     </button>
   </div>
 
-  <div class="empty-orders-content">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading your orders...</p>
+  </div>
+
+  <!-- Orders List -->
+  <div *ngIf="!isLoading && hasOrders" class="orders-list-container">
+    <div class="orders-stats">
+      <div class="stat-card">
+        <span class="stat-number">{{ orders.length }}</span>
+        <span class="stat-label">Total Orders</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ getActiveOrdersCount() }}</span>
+        <span class="stat-label">Active Orders</span>
+      </div>
+    </div>
+
+    <div class="orders-table-container card">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders" [class.cancelled]="order.status === 'Cancelled'">
+            <td class="order-id">#{{ order.id }}</td>
+            <td class="order-date">{{ formatDate(order.orderDate || '') }}</td>
+            <td class="order-items">{{ getTotalItems(order) }} items</td>
+            <td class="order-total">{{ formatPrice(order.totalPrice) }}</td>
+            <td>
+              <span class="status-badge" [ngClass]="getStatusClass(order.status)">
+                {{ order.status }}
+              </span>
+            </td>
+            <td class="actions">
+              <button 
+                mat-icon-button 
+                color="primary" 
+                (click)="viewOrderDetails(order)"
+                title="View Details"
+              >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button 
+                *ngIf="order.status !== 'Cancelled' && order.status !== 'Delivered'"
+                mat-icon-button 
+                color="warn" 
+                (click)="cancelOrder(order.id)"
+                title="Cancel Order"
+              >
+                <mat-icon>cancel</mat-icon>
+              </button>
+              <button 
+  mat-icon-button 
+  color="accent" 
+  *ngIf="order.status === 'Delivered'"
+  title="Reorder"
+  (click)="reorder(order)"
+  [disabled]="reordering"
+>
+  <mat-icon *ngIf="!reordering">refresh</mat-icon>
+  <mat-icon *ngIf="reordering" class="spinning">autorenew</mat-icon>
+</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && !hasOrders" class="empty-orders-content">
     <div class="empty-orders-icon">
       <i class="fa-solid fa-box-open"></i>
     </div>
@@ -29,6 +108,87 @@
         <mat-icon>help</mat-icon>
         Contact Support
       </a>
+    </div>
+  </div>
+
+  <!-- Order Details Modal -->
+  <div *ngIf="selectedOrder" class="modal-overlay" (click)="closeOrderDetails()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Order Details #{{ selectedOrder.id }}</h2>
+        <button mat-icon-button (click)="closeOrderDetails()" class="close-btn">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="order-summary">
+          <div class="summary-row">
+            <div class="summary-item">
+              <span class="label">Order Date:</span>
+              <span class="value">{{ formatDate(selectedOrder.orderDate || '') }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Status:</span>
+              <span class="status-badge" [ngClass]="getStatusClass(selectedOrder.status)">
+                {{ selectedOrder.status }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="summary-row">
+            <div class="summary-item">
+              <span class="label">Shipping Address:</span>
+              <span class="value">{{ selectedOrder.address }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Contact:</span>
+              <span class="value">{{ selectedOrder.contact }}</span>
+            </div>
+          </div>
+          
+          <div class="summary-row">
+            <div class="summary-item">
+              <span class="label">Payment Method:</span>
+              <span class="value">{{ selectedOrder.paymentMethod }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Total Amount:</span>
+              <span class="value total-amount">{{ formatPrice(selectedOrder.totalPrice) }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Order Items -->
+        <div class="order-items-section" *ngIf="selectedOrder.items && selectedOrder.items.length > 0">
+          <h3>Order Items ({{ getTotalItems(selectedOrder) }})</h3>
+          <div class="items-list">
+            <div *ngFor="let item of selectedOrder.items" class="order-item">
+              <img [src]="item.product.uploadPhoto" [alt]="item.product.name" class="item-image">
+              <div class="item-details">
+                <h4>{{ item.product.name }}</h4>
+                <p class="item-category">{{ item.product.category }}</p>
+                <div class="item-quantity-price">
+                  <span>Quantity: {{ item.quantity }}</span>
+                  <span>Price: {{ formatPrice(item.product.price * item.quantity) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button mat-button (click)="closeOrderDetails()">Close</button>
+        <button 
+          *ngIf="selectedOrder.status !== 'Cancelled' && selectedOrder.status !== 'Delivered'"
+          mat-raised-button 
+          color="warn"
+          (click)="cancelOrder(selectedOrder.id)"
+        >
+          Cancel Order
+        </button>
+      </div>
     </div>
   </div>
 </div>

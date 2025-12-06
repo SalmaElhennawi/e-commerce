@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { MainComponent } from './main/main.component';
 import { SellerAuthGuard } from '../guards/seller-auth.guard';
 import { PromoCodesComponent } from './promo-codes/promo-codes.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
 {  path: '',  canActivate: [SellerAuthGuard],component: DashboardComponent, children:[
@@ -15,6 +16,7 @@ const routes: Routes = [
       {  path: 'promo-codes',  component: PromoCodesComponent  },
       {  path: 'users',  component: UsersComponent  },
       {  path: 'orders',  component: OrdersComponent  },
+      {  path: 'contact',  component: ContactComponent  },
        { path: '', redirectTo: 'main', pathMatch: 'full' }
   ]}, 
    

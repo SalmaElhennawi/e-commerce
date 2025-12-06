@@ -1,0 +1,45 @@
+.list-group-item {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #f8f9fa;
+  }
+  
+  &.active {
+    background-color: #e7f1ff;
+    border-color: #0d6efd;
+  }
+}
+
+.badge {
+  font-size: 0.75em;
+  padding: 0.35em 0.65em;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .list-group-item .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .text-end {
+    text-align: left !important;
+    margin-top: 0.5rem;
+  }
+}
