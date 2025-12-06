@@ -167,7 +167,6 @@
 .bg-success { background: #2ecc71; }
 .bg-warning { background: #f39c12; }
 .bg-accent { background: #9b59b6; }
-.bg-info { background: #1abc9c; }
 
 .stat-content {
   flex: 1;
@@ -234,8 +233,6 @@
 .card-secondary { border-top: 4px solid #2ecc71; }
 .card-accent { border-top: 4px solid #9b59b6; }
 .card-success { border-top: 4px solid #1abc9c; }
-.card-info { border-top: 4px solid #3498db; }
-.card-dark { border-top: 4px solid #2c3e50; }
 
 .card-header {
   display: flex;
@@ -259,8 +256,6 @@
 .card-secondary .card-icon { color: #2ecc71; }
 .card-accent .card-icon { color: #9b59b6; }
 .card-success .card-icon { color: #1abc9c; }
-.card-info .card-icon { color: #3498db; }
-.card-dark .card-icon { color: #2c3e50; }
 
 .card-header h3 {
   font-size: 1.3rem;
@@ -319,11 +314,7 @@
   border-radius: 4px;
 }
 
-.bg-success { background: #2ecc71; }
-.bg-info { background: #3498db; }
-.bg-warning { background: #f39c12; }
-
-/* Enhanced Stats */
+/* Card Stats */
 .card-stats {
   display: flex;
   gap: 1.5rem;
@@ -542,6 +533,3 @@
     flex: 0 0 100%;
   }
 }
-
-/* Font Awesome Import */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');

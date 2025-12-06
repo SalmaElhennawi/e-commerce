@@ -745,38 +745,14 @@
     text-align: center;
     
     .item-image {
-      width: 100px !important;
-      height: 100px !important;
+      width: 100px;
+      height: 100px;
       margin: 0 auto;
     }
     
     .item-quantity-price {
       flex-direction: column;
       gap: 5px;
-    }
-  }
-}
-
-// Print Styles
-@media print {
-  .orders-admin-container {
-    padding: 0;
-    background: white;
-  }
-  
-  .filters-section,
-  .pagination-container,
-  .actions,
-  .btn-clear,
-  .modal-overlay {
-    display: none !important;
-  }
-  
-  .orders-table {
-    border: 1px solid #000;
-    
-    th, td {
-      border: 1px solid #000;
     }
   }
 }

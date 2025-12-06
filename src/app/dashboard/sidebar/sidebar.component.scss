@@ -8,13 +8,13 @@
   top: 0;
   display: flex;
   flex-direction: column;
-  z-index: 500; // Increased z-index
+  z-index: 500;
   transition: transform 0.3s ease;
   
   @media (max-width: 768px) {
     width: 280px;
     transform: translateX(-100%);
-    top: 60px; // Start below mobile header
+    top: 60px;
     height: calc(100vh - 60px);
     
     &.mobile-open {
@@ -81,11 +81,6 @@
   }
 }
 
-.nav-text {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 .sidebar-footer {
   padding: 1.5rem;
   border-top: 1px solid #f0f0f0;
@@ -110,12 +105,6 @@
   height: 24px;
   margin-right: 0.75rem;
   opacity: 0.8;
-}
-
-.user-text {
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .auth-dropdown {
@@ -159,7 +148,7 @@
   
   @media (max-width: 768px) {
     position: fixed;
-    top: 60px; // Start below mobile header
+    top: 60px;
     left: 0;
     width: 100%;
     height: calc(100vh - 60px);

@@ -523,11 +523,6 @@
             border-color: #3498db;
           }
         }
-        
-        .ellipsis {
-          color: #94a3b8;
-          padding: 0 8px;
-        }
       }
     }
   }
@@ -556,10 +551,6 @@
         flex-direction: column;
         gap: 15px;
         align-items: stretch;
-        
-        .table-info, .table-actions {
-          justify-content: space-between;
-        }
       }
       
       .bulk-actions {
@@ -584,11 +575,6 @@
     .pagination {
       flex-direction: column;
       gap: 15px;
-      
-      .page-numbers {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
     }
   }
 }

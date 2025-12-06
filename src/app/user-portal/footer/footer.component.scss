@@ -2,9 +2,8 @@
   position: relative;
   background-color: #000;
   color: #fff;
-  padding-bottom: 120px; 
+  padding-bottom: 120px;
   overflow: hidden;
-
 
   @media (max-width: 768px) {
     padding: 2rem 1rem !important;
@@ -124,7 +123,6 @@
     }
   }
 
-  // Improve touch targets for mobile
   @media (max-width: 768px) {
     ul li {
       padding: 0.25rem 0;
@@ -135,10 +133,9 @@
   }
 }
 
-
 .footer-image {
   position: absolute;
-  bottom: -30px; /* adjust as needed for desktop */
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
   width: auto;
@@ -169,4 +166,3 @@
     bottom: -15px;
   }
 }
-

@@ -91,7 +91,7 @@ html, body {
 .input-group-single input:focus {
   border-color: #000000;
   background: #fff;
-  box-shadow: 0 0 0 2px rgba(19, 121, 210, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 /* INPUT ICONS */
@@ -157,7 +157,7 @@ html, body {
   &:hover:not(:disabled) {
     background: #212020;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(19, 121, 210, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
   
   &:disabled {

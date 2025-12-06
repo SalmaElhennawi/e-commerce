@@ -2,7 +2,6 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Hero Section */
 .blog-hero {
   position: relative;
   height: 60vh;
@@ -79,10 +78,6 @@
       background: white;
       color: #333;
     }
-
-    i {
-      font-size: 1.2rem;
-    }
   }
 }
 
@@ -98,14 +93,12 @@
   }
 }
 
-/* Blog Content Section */
 .blog-content-section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem 4rem;
 }
 
-/* Category Filter */
 .category-filter {
   display: flex;
   justify-content: center;
@@ -139,7 +132,6 @@
   }
 }
 
-/* Blog Grid */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -158,7 +150,6 @@
   font-size: 1.1rem;
 }
 
-/* Blog Card */
 .blog-card {
   background: white;
   border-radius: 12px;
@@ -255,7 +246,6 @@
   }
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
   .blog-hero {
     height: 50vh;
