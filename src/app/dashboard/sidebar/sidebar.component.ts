@@ -45,17 +45,8 @@ export class SidebarComponent implements OnInit {
     this.sidebarToggled.emit(false);
   }
   
-  toggleAuthDropdown() {
-    this.isAuthDropdownOpen = !this.isAuthDropdownOpen;
-  }
-  
-  closeAuthDropdown() {
-    this.isAuthDropdownOpen = false;
-  }
-  
   logout(): void {
     this.sellerService.signOut();
-    this.closeAuthDropdown();
     this.closeMobileMenu();
   }
 }

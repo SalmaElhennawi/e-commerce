@@ -26,7 +26,7 @@ const routes: Routes = [
       {  path: 'blog',  component: BlogComponent  },
       {  path: 'brands',  component: BrandsComponent  },
       {  path: 'children',  component: ChildrenComponent  },
-      {  path: 'contact',  component: ContactComponent  },
+      {  path: 'contact',  component: ContactComponent, canActivate:[UserAuthGuard]  },
       {  path: 'home',  component: HomeComponent  },
       {  path: 'men',  component: MenComponent  },
       {  path: 'new-offers',  component: NewOffersComponent  },

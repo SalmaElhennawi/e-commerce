@@ -107,42 +107,6 @@
   opacity: 0.8;
 }
 
-.auth-dropdown {
-  position: absolute;
-  bottom: 80px;
-  left: 1.5rem;
-  right: 1.5rem;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  padding: 10px;
-  z-index: 1002;
-  display: none;
-  
-  &.active {
-    display: block;
-  }
-  
-  .logout-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #000000;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 0.9rem;
-    
-    &:hover {
-      background-color: #333333;
-    }
-  }
-}
-
 .mobile-overlay {
   display: none;
   
@@ -163,5 +127,19 @@
       opacity: 1;
       visibility: visible;
     }
+  }
+}
+
+.logout-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  color: #4a4a4a; /* default gray */
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: red;
   }
 }

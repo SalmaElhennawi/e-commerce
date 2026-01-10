@@ -27,14 +27,9 @@
     </div>
   </nav>
 
-  <div class="sidebar-footer">
-    <div class="user-section" (click)="toggleAuthDropdown()">
-      <img src="../../../assets/icons/sign-out.png" class="user-icon">
-      <span>Account</span>
-    </div>
+ <div class="nav-item logout-item" (click)="logout()">
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Logout</span>
+</div>
 
-    <div class="auth-dropdown" [class.active]="isAuthDropdownOpen">
-      <button (click)="logout()" class="logout-btn">Sign Out</button>
-    </div>
-  </div>
 </aside>
